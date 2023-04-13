@@ -1,1 +1,16 @@
-<p>initial works!</p>
+<section class="flex-column-center-center sm:flex-row">
+
+    <div class="flex-column-center-center base-buttons" (click)="navigate('login')">
+        <i class="pi pi-user mb-1"></i>
+        <h1>Aluno</h1>
+    </div>
+    <div class="flex-column-center-center base-buttons" (click)="navigate('login/visitante')">
+        <i class="pi pi-users mb-1"></i>
+        <h1>Visitante</h1>
+    </div>
+    <div class="flex-column-center-center base-buttons" (click)="navigate('login/restrito')">
+        <i class="pi pi-lock mb-1"></i>
+        <h1>Restrito</h1>
+    </div>
+
+</section>

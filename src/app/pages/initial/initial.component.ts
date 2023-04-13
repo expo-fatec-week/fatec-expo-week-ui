@@ -1,15 +1,20 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-initial',
   templateUrl: './initial.component.html',
   styleUrls: ['./initial.component.scss']
 })
-export class InitialComponent implements OnInit {
+export class InitialComponent {
 
-  constructor() { }
+  constructor(
+    private router: Router
+  ) { }
 
-  ngOnInit(): void {
+  public navigate(uri: string) {
+    console.log(uri);
+    this.router.navigateByUrl(uri);
   }
 
 }

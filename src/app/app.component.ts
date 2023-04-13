@@ -6,5 +6,9 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.scss']
 })
 export class AppComponent {
-  title = 'fatec-expoweek-ui';
+
+  public showCredits(): void {
+    console.log('créditos');
+  }
+
 }
