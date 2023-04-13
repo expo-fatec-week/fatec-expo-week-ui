@@ -1,0 +1,12 @@
+.base-page {
+    min-height: var(--min-h-main-section);
+    text-align: center;
+
+    h1 {
+        font-size: 4rem;
+    }
+
+    h2 {
+        padding: 1rem 0;
+    }
+}

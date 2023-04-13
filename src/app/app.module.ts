@@ -7,7 +7,8 @@ import { AppComponent } from './app.component';
 import { InitialComponent } from './pages/initial/initial.component';
 import { NotFoundComponent } from './pages/not-found/not-found.component';
 
-import { AccordionModule } from 'primeng-lts/accordion';
+import { ButtonModule } from 'primeng-lts/button';
+
 
 @NgModule({
   declarations: [
@@ -19,7 +20,7 @@ import { AccordionModule } from 'primeng-lts/accordion';
     BrowserModule,
     BrowserAnimationsModule,
     AppRoutingModule,
-    AccordionModule
+    ButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]
