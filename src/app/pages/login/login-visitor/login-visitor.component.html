@@ -30,14 +30,14 @@
                 <span class="w-full">
                     <p-checkbox name="aceptTerm" [binary]="true" label="Aceitar os Termos" class="mb-2"
                         [(ngModel)]="requestLoginVisitant.aceitaTermo"></p-checkbox>
-                    <p class="mb-4"><u>Visualizar termos de uso e privacidade</u></p>
+                    <p class="mb-4" (click)="showTermsAndPolicies()" style="cursor: pointer;"><u>Visualizar termos de uso e privacidade</u></p>
                 </span>
 
 
             </div>
             <div>
-                <button pButton label="Entrar" type="submit" class="p-button-primary mr-3"></button>
-                <button pButton label="Voltar" type="button" class="p-button-danger" routerLink="/"></button>
+                <button pButton label="Voltar" type="button" class="p-button-danger mr-2" routerLink="/"></button>
+                <button pButton label="Entrar" type="submit" class="p-button-primary ml-2"></button>
             </div>
         </form>
     </p-card>

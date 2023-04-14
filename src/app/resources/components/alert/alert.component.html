@@ -1,0 +1,39 @@
+<div *ngIf="!config.data.confirmation">
+    <div *ngIf="config.data.icon" class="mt-4 mb-4 flex justify-content-center">
+        <i class="{{ config.data.icon }}" [ngClass]="{
+            'text-green-500': config.data.icon === 'pi pi-check-circle',
+            'text-blue-500': config.data.icon === 'pi pi-info-circle',
+            'text-gray-500': config.data.icon === 'pi pi-question-circle',
+            'text-red-500': config.data.icon === 'pi pi-times-circle',
+            'text-yellow-500': config.data.icon === 'pi pi-exclamation-circle'
+        }" style="font-size: 4em;"></i>
+    </div>
+    <div *ngIf="config.data.title" class="mt-4 mb-4 flex justify-content-center">
+        <h2>{{ config.data.title }}</h2>
+    </div>
+    <div class="flex justify-content-center">
+        <p class="text-center" [innerHTML]="config.data.message"></p>
+    </div>
+    <div class="mt-4 flex justify-content-center">
+        <button pButton type="button" label="Ok" (click)="close()"></button>
+    </div>
+</div>
+
+<div *ngIf="config.data.confirmation">
+    <div class="mt-4 mb-4 flex justify-content-center">
+        <i class="{{ config.data.icon }} text-gray-500" style="font-size: 4em;"></i>
+    </div>
+    <div *ngIf="config.data.title" class="mt-4 mb-4 flex justify-content-center">
+        <h2>{{ config.data.title }}</h2>
+    </div>
+    <div class="flex justify-content-center">
+        <p class="text-center" [innerHTML]="config.data.message"></p>
+    </div>
+    <div class="mt-4 flex justify-content-center">
+        <button pButton pRipple type="button" icon="pi pi-times" label="Não" class="p-button-danger mr-1"
+            (click)="config.data.confirmation.reject(); close()"></button>
+
+        <button pButton pRipple type="button" icon="pi pi-check" label="Sim" class="ml-1"
+            (click)="config.data.confirmation.accept(); close()"></button>
+    </div>
+</div>

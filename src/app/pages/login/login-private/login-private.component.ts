@@ -27,9 +27,6 @@ export class LoginPrivateComponent {
       .subscribe(
         success => {
           console.log(success);
-        },
-        error => {
-          alert(error);
         }
       );
   }

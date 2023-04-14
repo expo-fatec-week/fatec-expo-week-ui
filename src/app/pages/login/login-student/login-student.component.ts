@@ -27,9 +27,6 @@ export class LoginStudentComponent {
       .subscribe(
         success => {
           console.log(success);
-        },
-        error => {
-          alert(error);
         }
       );
   }

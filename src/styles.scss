@@ -17,8 +17,12 @@ body,
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
 
-    --bg-i-dark: #181622;
+    --bg-i-dark: #333333;
     --bg-o-dark: #252526;
+    
+    // --bg-i-dark: #181622;
+    // --bg-o-dark: #1e1e1e;
+    
     --min-h-main-section: calc(100vh - 100px);
 
     @media screen and (min-width: 768px) {
