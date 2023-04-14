@@ -1,1 +1,31 @@
-<p>login-private works!</p>
+<section class="flex-column-center-center grid grid-nogutter">
+    <p-card class="col-11 md:col-6 lg:col-4 xl:col-3" #blockedContent>
+        <ng-template pTemplate="header">
+            <i class="pi pi-lock mt-4 mb-2"></i>
+            <h2>Bem vindo Representante!</h2>
+        </ng-template>
+        <form (ngSubmit)="doLogin()" ngNativeValidate>
+            <div class="w-full">
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="username" name="username" type="text" pInputText
+                        [(ngModel)]="requestLoginPrivate.user" required>
+                    <label for="username">Usuário</label>
+                </span>
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="password" name="password" type="text" pInputText
+                        [(ngModel)]="requestLoginPrivate.password" required>
+                    <label for="password">Senha</label>
+                </span>
+            </div>
+            <div>
+                <button pButton label="Entrar" type="submit" class="p-button-primary mr-3"></button>
+                <button pButton label="Voltar" type="button" class="p-button-danger" routerLink="/"></button>
+            </div>
+        </form>
+    </p-card>
+
+</section>
+
+<p-blockUI [target]="blockedContent" [blocked]="isBlock">
+    <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+</p-blockUI>

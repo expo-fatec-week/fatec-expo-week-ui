@@ -1,1 +1,49 @@
-<p>login-visitor works!</p>
+<section class="flex-column-center-center grid grid-nogutter">
+    <p-card class="col-11 md:col-6 lg:col-4 xl:col-3" #blockedContent>
+        <ng-template pTemplate="header">
+            <i class="pi pi-lock mt-4 mb-2"></i>
+            <h2>Bem vindo Visitante!</h2>
+        </ng-template>
+        <form (ngSubmit)="tryLogin()" ngNativeValidate>
+            <div class="w-full">
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="cpf" name="cpf" type="text" pInputText
+                        [(ngModel)]="requestLoginVisitant.cpf" required>
+                    <label for="cpf">CPF</label>
+                </span>
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="email" name="email" type="email" pInputText
+                        [(ngModel)]="requestLoginVisitant.email" required>
+                    <label for="email">E-mail</label>
+                </span>
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="name" name="name" type="text" pInputText
+                        [(ngModel)]="requestLoginVisitant.name" required>
+                    <label for="name">Nome</label>
+                </span>
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="phone" name="phone" type="text" pInputText
+                        [(ngModel)]="requestLoginVisitant.tel" required>
+                    <label for="phone">Telefone</label>
+                </span>
+
+                <span class="w-full">
+                    <p-checkbox name="aceptTerm" [binary]="true" label="Aceitar os Termos" class="mb-2"
+                        [(ngModel)]="requestLoginVisitant.aceitaTermo"></p-checkbox>
+                    <p class="mb-4"><u>Visualizar termos de uso e privacidade</u></p>
+                </span>
+
+
+            </div>
+            <div>
+                <button pButton label="Entrar" type="submit" class="p-button-primary mr-3"></button>
+                <button pButton label="Voltar" type="button" class="p-button-danger" routerLink="/"></button>
+            </div>
+        </form>
+    </p-card>
+
+</section>
+
+<p-blockUI [target]="blockedContent" [blocked]="isBlock">
+    <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+</p-blockUI>

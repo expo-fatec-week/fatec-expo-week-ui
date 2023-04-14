@@ -1,1 +1,31 @@
-<p>login-student works!</p>
+<section class="flex-column-center-center grid grid-nogutter">
+    <p-card class="col-11 md:col-6 lg:col-4 xl:col-3" #blockedContent>
+        <ng-template pTemplate="header">
+            <i class="pi pi-user mt-4 mb-2"></i>
+            <h2>Bem vindo Aluno!</h2>
+        </ng-template>
+        <form (ngSubmit)="doLogin()" ngNativeValidate>
+            <div class="w-full">
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="ra" name="ra" type="text" pInputText [(ngModel)]="requestLoginStudent.ra"
+                        required>
+                    <label for="ra">RA</label>
+                </span>
+                <span class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="email" name="email" type="email" pInputText
+                        [(ngModel)]="requestLoginStudent.email" required>
+                    <label for="email">E-mail</label>
+                </span>
+            </div>
+            <div>
+                <button pButton label="Entrar" type="submit" class="p-button-primary mr-3"></button>
+                <button pButton label="Voltar" type="button" class="p-button-danger" routerLink="/"></button>
+            </div>
+        </form>
+    </p-card>
+
+</section>
+
+<p-blockUI [target]="blockedContent" [blocked]="isBlock">
+    <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+</p-blockUI>
