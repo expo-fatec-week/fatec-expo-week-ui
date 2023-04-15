@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize, first } from 'rxjs/operators';
 import { RequestLoginPrivate } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
@@ -14,7 +15,8 @@ export class LoginPrivateComponent {
   public requestLoginPrivate = {} as RequestLoginPrivate;
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   public doLogin(): void {
@@ -25,8 +27,8 @@ export class LoginPrivateComponent {
           this.isBlock = false;
         }))
       .subscribe(
-        success => {
-          console.log(success);
+        () => {
+          this.router.navigateByUrl('home');
         }
       );
   }

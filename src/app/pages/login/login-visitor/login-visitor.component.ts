@@ -1,8 +1,10 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 import { finalize, first } from 'rxjs/operators';
 import { RequestLoginVisitor as RequestLoginVisitor } from 'src/app/models/login';
 import { AlertService } from 'src/app/services/alert.service';
 import { LoginService } from 'src/app/services/login.service';
+import { RegisterUsersService } from 'src/app/services/register-users.service';
 
 @Component({
   selector: 'app-login-visitor',
@@ -12,27 +14,52 @@ import { LoginService } from 'src/app/services/login.service';
 export class LoginVisitorComponent {
 
   public isBlock = false;
-  public requestLoginVisitant = {} as RequestLoginVisitor;
+  public requestLoginVisitor = {} as RequestLoginVisitor;
+  public enableRegister = false;
 
   constructor(
     private loginService: LoginService,
-    private alertService: AlertService
+    private resgiterUser: RegisterUsersService,
+    private alertService: AlertService,
+    private router: Router
   ) { }
 
   public tryLogin(): void {
-    console.log('Tentou');
+    if (!this.requestLoginVisitor.email && !this.requestLoginVisitor.name) {
+      this.doLogin();
+    } else {
+      this.registerVisitor();
+    }
   }
 
   public doLogin(): void {
     this.isBlock = true;
-    this.loginService.loginVisitant(this.requestLoginVisitant.cpf)
+    this.loginService.loginVisitor(this.requestLoginVisitor.cpf)
       .pipe(first(),
         finalize(() => {
           this.isBlock = false;
         }))
       .subscribe(
-        success => {
-          console.log(success);
+        res => {
+          if (res) {
+            this.router.navigateByUrl('home');
+          } else {
+            this.enableRegister = true;
+          }
+        }
+      );
+  }
+
+  public registerVisitor(): void {
+    this.isBlock = true;
+    this.resgiterUser.registerVisitor(this.requestLoginVisitor)
+      .pipe(first(),
+        finalize(() => {
+          this.isBlock = false;
+        }))
+      .subscribe(
+        () => {
+          this.router.navigateByUrl('home');
         }
       );
   }

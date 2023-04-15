@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { RequestLoginStudent } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
 import { first, finalize } from 'rxjs/operators';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login-student',
@@ -14,7 +15,8 @@ export class LoginStudentComponent {
   public requestLoginStudent = {} as RequestLoginStudent;
 
   constructor(
-    private loginService: LoginService
+    private loginService: LoginService,
+    private router: Router
   ) { }
 
   public doLogin(): void {
@@ -25,8 +27,8 @@ export class LoginStudentComponent {
           this.isBlock = false;
         }))
       .subscribe(
-        success => {
-          console.log(success);
+        () => {
+          this.router.navigateByUrl('home');
         }
       );
   }

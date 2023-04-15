@@ -8,29 +8,30 @@
             <div class="w-full">
                 <span class="p-float-label mb-4 w-full">
                     <input class="w-full" id="cpf" name="cpf" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitant.cpf" required>
+                        [(ngModel)]="requestLoginVisitor.cpf" required>
                     <label for="cpf">CPF</label>
                 </span>
-                <span class="p-float-label mb-4 w-full">
+                <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="email" name="email" type="email" pInputText
-                        [(ngModel)]="requestLoginVisitant.email" required>
+                        [(ngModel)]="requestLoginVisitor.email" required>
                     <label for="email">E-mail</label>
                 </span>
-                <span class="p-float-label mb-4 w-full">
+                <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="name" name="name" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitant.name" required>
+                        [(ngModel)]="requestLoginVisitor.name" required>
                     <label for="name">Nome</label>
                 </span>
-                <span class="p-float-label mb-4 w-full">
+                <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="phone" name="phone" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitant.tel" required>
+                        [(ngModel)]="requestLoginVisitor.tel" required>
                     <label for="phone">Telefone</label>
                 </span>
 
-                <span class="w-full">
+                <span *ngIf="enableRegister" class="w-full">
                     <p-checkbox name="aceptTerm" [binary]="true" label="Aceitar os Termos" class="mb-2"
-                        [(ngModel)]="requestLoginVisitant.aceitaTermo"></p-checkbox>
-                    <p class="mb-4" (click)="showTermsAndPolicies()" style="cursor: pointer;"><u>Visualizar termos de uso e privacidade</u></p>
+                        [(ngModel)]="requestLoginVisitor.aceitaTermo" [required]="true"></p-checkbox>
+                    <p class="mb-4" (click)="showTermsAndPolicies()" style="cursor: pointer;"><u>Visualizar termos de
+                            uso e privacidade</u></p>
                 </span>
 
 

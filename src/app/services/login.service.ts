@@ -24,7 +24,9 @@ export class LoginService {
         .pipe(first())
         .subscribe(
           res => {
-            this.tokenService.savePerson(res[0].id_pessoa, res[0].nome);
+            if (res) {
+              this.tokenService.savePerson(res[0]?.id_pessoa, res[0]?.nome);
+            }
             observer.next(res);
           }, err => {
             observer.next(err);
@@ -39,7 +41,9 @@ export class LoginService {
         .pipe(first())
         .subscribe(
           res => {
-            this.tokenService.saveToken(res.token);
+            if (res) {
+              this.tokenService.saveToken(res.token);
+            }
             observer.next(res);
           }, err => {
             observer.next(err);
@@ -48,13 +52,15 @@ export class LoginService {
     });
   }
 
-  public loginVisitant(cpf: string): Observable<Array<ResponseLoginVisitor>> {
+  public loginVisitor(cpf: string): Observable<Array<ResponseLoginVisitor>> {
     return new Observable<Array<ResponseLoginVisitor>>(observer => {
       this.httpClient.get<Array<ResponseLoginVisitor>>(this.urlBase + `user/${cpf}`)
         .pipe(first())
         .subscribe(
           res => {
-            this.tokenService.savePerson(res[0].id_pessoa, res[0].nome);
+            if (res) {
+              this.tokenService.savePerson(res[0].id_pessoa, res[0].nome);
+            }
             observer.next(res);
           }, err => {
             observer.next(err);
