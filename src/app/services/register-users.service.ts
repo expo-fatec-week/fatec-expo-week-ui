@@ -15,8 +15,8 @@ export class RegisterUsersService {
     private httpClient: HttpClient
   ) { }
 
-  public registerVisitor(requestVisitor: RequestLoginVisitor): Observable<string> {
-    return this.httpClient.post<string>(this.urlBase + 'visitor', requestVisitor);
+  public registerVisitor(requestVisitor: RequestLoginVisitor): Observable<{ message: string }> {
+    return this.httpClient.post<{ message: string }>(this.urlBase + 'visitor', requestVisitor);
   }
 
 }

@@ -1,0 +1,38 @@
+:host {
+    ::ng-deep {
+
+        .p-tabview-panels,
+        .p-tabview-nav-link {
+            background-color: var(--bg-i-dark) !important;
+        }
+
+        .p-tabview-nav-link {
+            display: block;
+        }
+
+        .p-tabview-nav {
+            display: block;
+        }
+
+        .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus,
+        .p-datatable,
+        .p-datatable-table,
+        .p-datatable-wrapper,
+        .p-datatable-tbody td,
+        .p-datatable-thead th,
+        .p-column-title {
+            background-color: #f5f5f5 !important;
+            color: black !important;
+        }
+
+        .p-datatable-header {
+            background-color: var(--bg-i-dark-secondary);
+        }
+
+        @media screen and (min-width: 500px) {
+            .p-tabview-nav {
+                display: flex;
+            }
+        }
+    }
+}

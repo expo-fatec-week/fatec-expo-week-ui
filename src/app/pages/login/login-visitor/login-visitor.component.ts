@@ -5,6 +5,7 @@ import { RequestLoginVisitor as RequestLoginVisitor } from 'src/app/models/login
 import { AlertService } from 'src/app/services/alert.service';
 import { LoginService } from 'src/app/services/login.service';
 import { RegisterUsersService } from 'src/app/services/register-users.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login-visitor',
@@ -21,8 +22,11 @@ export class LoginVisitorComponent {
     private loginService: LoginService,
     private resgiterUser: RegisterUsersService,
     private alertService: AlertService,
-    private router: Router
-  ) { }
+    private router: Router,
+    private tokenService: TokenService
+  ) {
+    this.tokenService.removeToken();
+  }
 
   public tryLogin(): void {
     if (!this.requestLoginVisitor.email && !this.requestLoginVisitor.name) {
@@ -41,11 +45,10 @@ export class LoginVisitorComponent {
         }))
       .subscribe(
         res => {
-          if (res) {
-            this.router.navigateByUrl('home');
-          } else {
-            this.enableRegister = true;
-          }
+          this.tokenService.saveToken(res.access_token);
+          this.router.navigateByUrl('home');
+        }, () => {
+          this.enableRegister = true;
         }
       );
   }
@@ -56,16 +59,18 @@ export class LoginVisitorComponent {
       .pipe(first(),
         finalize(() => {
           this.isBlock = false;
+          this.requestLoginVisitor = {} as RequestLoginVisitor;
         }))
       .subscribe(
-        () => {
-          this.router.navigateByUrl('home');
+        res => {
+          this.alertService.success(res.message);
+          this.doLogin();
         }
       );
   }
 
   public showTermsAndPolicies(): void {
-    const message = `<div class="text-left p-4"><p><strong>Termo de uso</strong></p>
+    const message = `<div class="text-left"><p><strong>Termo de uso</strong></p>
     <p>Este é um termo de uso estabelecido a você, designado como usuário. O presente termo trata-se da utilidade do sistema
         web disponibilizado gratuitamente, seja para dispositivos móveis ou computadores pessoais. Leia cuidadosamente em
         razão de que o uso deste site significa que foi analisado e aceitado todos os termos.</p>
