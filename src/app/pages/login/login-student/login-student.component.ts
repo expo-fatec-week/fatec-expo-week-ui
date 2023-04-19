@@ -21,7 +21,7 @@ export class LoginStudentComponent {
 
   public doLogin(): void {
     this.isBlock = true;
-    this.loginService.loginStudent(this.requestLoginStudent.ra, this.requestLoginStudent.email)
+    this.loginService.loginStudent(this.requestLoginStudent)
       .pipe(first(),
         finalize(() => {
           this.isBlock = false;

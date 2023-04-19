@@ -1,1 +1,66 @@
-<p>home works!</p>
+<!-- <p-table responsiveLayout="stack" [value]="products">
+    <ng-template pTemplate="caption">
+        Stack
+    </ng-template>
+    <ng-template pTemplate="header" let-columns>
+        <tr>
+            <th>Name </th>
+            <th>Price</th>
+            <th>Category</th>
+            <th>Quantity</th>
+            <th>Status</th>
+            <th>Reviews</th>
+        </tr>
+    </ng-template>
+    <ng-template pTemplate="body" let-product let-columns="columns">
+        <tr>
+            <td><span class="p-column-title">Name</span>{{product.name}}</td>
+            <td><span class="p-column-title">Price</span>{{product.price | currency:'USD'}}</td>
+            <td><span class="p-column-title">Category</span>{{product.category}}</td>
+            <td><span class="p-column-title">Quantity</span>{{product.quantity}}</td>
+            <td><span class="p-column-title">Status</span><span
+                    [class]="'product-badge status-' + (product.inventoryStatus ? product.inventoryStatus.toLowerCase() : '')">{{product.inventoryStatus}}</span>
+            </td>
+            <td><span class="p-column-title">Reviews</span><p-rating [ngModel]="product.rating" [readonly]="true"
+                    [cancel]="false"></p-rating></td>
+        </tr>
+    </ng-template>
+</p-table> -->
+
+<p-tabView styleClass="tabview-custom">
+    <p-tabPanel>
+        <ng-template pTemplate="header">
+            <i class="pi pi-calendar"></i>
+            <span>Header I</span>
+        </ng-template>
+        <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation
+            ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate
+            velit esse cillum dolore eu fugiat nulla pariatur.
+            Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est
+            laborum.</p>
+    </p-tabPanel>
+    <p-tabPanel header="Header II">
+        <ng-template pTemplate="header">
+            <i class="pi pi-user"></i>
+            <span>Header II</span>
+        </ng-template>
+        <p>Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque laudantium, totam rem
+            aperiam, eaque ipsa quae ab illo inventore veritatis et quasi
+            architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit aspernatur aut
+            odit aut fugit, sed quia consequuntur magni dolores eos qui ratione
+            voluptatem sequi nesciunt. Consectetur, adipisci velit, sed quia non numquam eius modi.</p>
+    </p-tabPanel>
+    <p-tabPanel header="Header III">
+        <ng-template pTemplate="header">
+            <i class="pi pi-search"></i>
+            <span>Header III</span>
+            <i class="pi pi-cog"></i>
+        </ng-template>
+        <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum deleniti
+            atque corrupti quos dolores et quas molestias excepturi sint occaecati
+            cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est laborum et
+            dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
+            Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
+    </p-tabPanel>
+</p-tabView>

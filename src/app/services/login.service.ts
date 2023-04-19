@@ -2,7 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
-import { RequestLoginPrivate, ResponseLoginPrivate, ResponseLoginStudent, ResponseLoginVisitor } from '../models/login';
+import { RequestLoginStudent, ResponseLogin } from '../models/login';
 import { first } from 'rxjs/operators';
 import { TokenService } from './token.service';
 
@@ -18,15 +18,13 @@ export class LoginService {
     private tokenService: TokenService
   ) { }
 
-  public loginStudent(ra: string, email: string): Observable<Array<ResponseLoginStudent>> {
-    return new Observable<Array<ResponseLoginStudent>>(observer => {
-      this.httpClient.get<Array<ResponseLoginStudent>>(this.urlBase + `student/${ra}/${email}`)
+  public loginStudent(requestLoginStudent: RequestLoginStudent): Observable<ResponseLogin> {
+    return new Observable<ResponseLogin>(observer => {
+      this.httpClient.post<ResponseLogin>(this.urlBase + 'login', requestLoginStudent)
         .pipe(first())
         .subscribe(
           res => {
-            if (res) {
-              this.tokenService.savePerson(res[0]?.id_pessoa, res[0]?.nome);
-            }
+            this.tokenService.saveToken(res.access_token);
             observer.next(res);
           }, err => {
             observer.next(err);
@@ -35,32 +33,13 @@ export class LoginService {
     });
   }
 
-  public loginPrivate(requestLoginPrivate: RequestLoginPrivate): Observable<ResponseLoginPrivate> {
-    return new Observable<ResponseLoginPrivate>(observer => {
-      this.httpClient.post<ResponseLoginPrivate>(this.urlBase + 'login', requestLoginPrivate)
+  public loginVisitor(cpf: string): Observable<ResponseLogin> {
+    return new Observable<ResponseLogin>(observer => {
+      this.httpClient.post<ResponseLogin>(this.urlBase + 'login/visitor', { cpf })
         .pipe(first())
         .subscribe(
           res => {
-            if (res) {
-              this.tokenService.saveToken(res.token);
-            }
-            observer.next(res);
-          }, err => {
-            observer.next(err);
-          }
-        );
-    });
-  }
-
-  public loginVisitor(cpf: string): Observable<Array<ResponseLoginVisitor>> {
-    return new Observable<Array<ResponseLoginVisitor>>(observer => {
-      this.httpClient.get<Array<ResponseLoginVisitor>>(this.urlBase + `user/${cpf}`)
-        .pipe(first())
-        .subscribe(
-          res => {
-            if (res) {
-              this.tokenService.savePerson(res[0].id_pessoa, res[0].nome);
-            }
+            this.tokenService.saveToken(res.access_token);
             observer.next(res);
           }, err => {
             observer.next(err);
