@@ -14,3 +14,11 @@ export interface RequestLoginVisitor {
 export interface ResponseLogin {
     access_token: string;
 }
+
+export interface UserLoggedIn {
+    name: string;
+    email: string;
+    ra?: string;
+    userType?: string;
+    personId: number;
+}

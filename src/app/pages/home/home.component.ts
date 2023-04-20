@@ -1,8 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { finalize, first } from 'rxjs/operators';
-import { ResponseEvent } from 'src/app/models/event';
+import { Router } from '@angular/router';
+import { MenuItem } from 'primeng-lts/api';
 import { AlertService } from 'src/app/services/alert.service';
-import { EventService } from 'src/app/services/event.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-home',
@@ -11,32 +11,54 @@ import { EventService } from 'src/app/services/event.service';
 })
 export class HomeComponent implements OnInit {
 
-  public events: ResponseEvent[] = [];
   public isBlock = false;
+  public menuItems: MenuItem[] = [];
+  public userName: string;
 
   constructor(
-    private eventService: EventService,
-    private alertService: AlertService
-  ) { }
-
-  ngOnInit(): void {
-    this.listEvents();
+    private alertService: AlertService,
+    private tokenService: TokenService,
+    private router: Router
+  ) {
+    this.userName = this.tokenService.getUserLogged().name;
   }
 
-  public listEvents(): void {
-    this.isBlock = true;
-    this.eventService.listEvents()
-      .pipe(first(),
-        finalize(() => {
-          this.isBlock = false;
-        }))
-      .subscribe(
-        success => {
-          this.events = success;
-        }, error => {
-          this.alertService.error(error.message);
-        }
-      );
+  ngOnInit(): void {
+    window.onscroll = () => this.observerScroll();
+    this.menuItems = [
+      // {
+      // label: 'Eventos',
+      // items: [
+      {
+        label: 'Disponíveis',
+        icon: 'pi pi-lock-open',
+        routerLink: 'disponiveis'
+      },
+      {
+        label: 'Participados',
+        icon: 'pi pi-check',
+        routerLink: 'participados'
+      }
+      // ]
+      // }
+    ];
+  }
+
+  public scrollToTop() {
+    window.scrollTo(0, 0);
+  }
+
+  private observerScroll() {
+    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+      document.getElementById('button-scroll')?.classList.add('flex');
+    } else {
+      document.getElementById('button-scroll')?.classList.remove('flex');
+    }
+  }
+
+  public exit(): void {
+    sessionStorage.removeItem('access_token');
+    this.router.navigateByUrl('');
   }
 
 }

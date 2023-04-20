@@ -14,7 +14,6 @@ import { ButtonModule } from 'primeng-lts/button';
 import { DynamicDialogModule, DialogService, DynamicDialogRef } from 'primeng-lts/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng-lts/confirmdialog';
 
-
 @NgModule({
   declarations: [
     AppComponent,
@@ -29,13 +28,13 @@ import { ConfirmDialogModule } from 'primeng-lts/confirmdialog';
     HttpClientModule,
     ButtonModule,
     DynamicDialogModule,
-		ConfirmDialogModule
+    ConfirmDialogModule
   ],
   bootstrap: [AppComponent],
   providers: [
     { provide: HTTP_INTERCEPTORS, useClass: HttpComunicationInterceptor, multi: true },
-		DialogService,
-		DynamicDialogRef
+    DialogService,
+    DynamicDialogRef
   ]
 })
 export class AppModule { }

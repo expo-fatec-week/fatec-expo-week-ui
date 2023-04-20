@@ -19,9 +19,7 @@ export class LoginStudentComponent {
     private loginService: LoginService,
     private router: Router,
     private tokenService: TokenService
-  ) {
-    this.tokenService.removeToken();
-  }
+  ) { }
 
   public doLogin(): void {
     this.isBlock = true;

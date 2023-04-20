@@ -35,13 +35,16 @@ export class HttpComunicationInterceptor implements HttpInterceptor {
             if (error.status >= 400 && error.status < 500) {
               this.alertService.warning(error.error.message);
               if (error.status === 401) {
+                this.tokenService.removeToken();
                 this.router.navigateByUrl('');
               }
+            } else if (error.status === 0 || error.status === 500) {
+              this.alertService.error('Falha ao tentar se comunicar com o servidor, tente novamente mais tarde.');
             } else {
               this.alertService.error(error.error.message);
             }
           }
-          return throwError(error.error.message);
+          return throwError(error);
         })
       );
   }

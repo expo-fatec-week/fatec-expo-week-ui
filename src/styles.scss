@@ -16,14 +16,15 @@ body,
     background: var(--bg-o-dark);
     text-rendering: optimizeLegibility;
     -webkit-font-smoothing: antialiased;
+    scroll-behavior: smooth;
 
     --bg-i-dark: #333333;
     --bg-o-dark: #252526;
-    --bg-i-dark-secondary: #555555;
+    --bg-i-dark-sec: #4e4e4e;
 
     // --bg-i-dark: #181622;
     // --bg-o-dark: #1e1e1e;
-    
+
     --min-h-main-section: calc(100vh - 100px);
 
     @media screen and (min-width: 768px) {
@@ -105,6 +106,28 @@ input {
         }
     }
 
+    .p-datatable .p-datatable-tbody>tr>td:last-child {
+        border-bottom: 1px solid #dee2e6 !important;
+        border-top: none !important;
+    }
+
+}
+
+// Colors
+.p-menubar,
+.p-submenubar-header,
+.p-menubar-root-list,
+.p-menubar-root-list>.p-menuitem-active>p-menubarsub>.p-submenu-list,
+.p-card,
+.p-dialog-content,
+.p-toolbar,
+.p-datatable .p-datatable-tbody>tr>td {
+    background-color: var(--bg-i-dark) !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th,
+.p-datatable .p-datatable-header {
+    background-color: var(--bg-i-dark-sec) !important;
 }
 
 .p-button-primary {
@@ -115,4 +138,31 @@ input {
 .p-button-danger {
     background-color: #e00002 !important;
     border-color: #e00002 !important;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    padding: .5rem !important;
+}
+
+.p-datatable .p-datatable-tbody>tr>td:last-child {
+    border-bottom: 3px solid #365360;
+    border-top: none;
+}
+
+.p-column-title {
+    font-weight: bold;
+    margin-right: 1rem;
+}
+
+.p-toolbar,
+.p-menu {
+    border-radius: 0 !important;
+}
+
+.p-toolbar {
+    padding: .5rem !important;
+
+    button {
+        padding: .3rem !important;
+    }
 }

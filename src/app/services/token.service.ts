@@ -1,4 +1,6 @@
 import { Injectable } from '@angular/core';
+import * as jwt from 'jwt-decode';
+import { UserLoggedIn } from '../models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -6,19 +8,30 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   private readonly token = 'token';
-  private readonly personId = 'personId';
-  private readonly name = 'name';
 
   public saveToken(token: string): void {
-    localStorage.setItem(this.token, token);
+    sessionStorage.setItem(this.token, token);
   }
 
   public getToken(): string | null {
-    return localStorage.getItem(this.token);
+    return sessionStorage.getItem(this.token);
   }
 
   public removeToken(): void {
-    localStorage.removeItem(this.token);
+    sessionStorage.removeItem(this.token);
+  }
+
+  public getUserLogged(): UserLoggedIn {
+    if (this.getToken()) {
+      const { name, email, userType, personId }: UserLoggedIn = jwt.default(this.getToken() ?? '');
+      return {
+        name,
+        email,
+        userType,
+        personId
+      };
+    }
+    return {} as UserLoggedIn;
   }
 
 }

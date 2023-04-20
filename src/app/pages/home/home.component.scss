@@ -1,38 +1,46 @@
 :host {
     ::ng-deep {
 
-        .p-tabview-panels,
-        .p-tabview-nav-link {
-            background-color: var(--bg-i-dark) !important;
-        }
+        .p-menu {
+            width: max-content;
+            min-height: var(--min-h-main-section);
+            .p-menuitem-link .p-menuitem-text {
+                display: none;
+            }
+            .p-menuitem,
+            .p-menuitem-link {
+                span {
+                    // margin: 0 !important;
+                }
 
-        .p-tabview-nav-link {
-            display: block;
-        }
-
-        .p-tabview-nav {
-            display: block;
-        }
-
-        .p-tabview .p-tabview-nav li .p-tabview-nav-link:not(.p-disabled):focus,
-        .p-datatable,
-        .p-datatable-table,
-        .p-datatable-wrapper,
-        .p-datatable-tbody td,
-        .p-datatable-thead th,
-        .p-column-title {
-            background-color: #f5f5f5 !important;
-            color: black !important;
-        }
-
-        .p-datatable-header {
-            background-color: var(--bg-i-dark-secondary);
+                :hover {
+                    background-color: var(--bg-o-dark);
+                }
+            }
         }
 
         @media screen and (min-width: 500px) {
-            .p-tabview-nav {
-                display: flex;
+            .p-menu {
+                // width: 52px;
+                left: 0;
+
+                .p-menuitem,
+                .p-menuitem-link {
+                    span {
+                        font-size: 1.5rem;
+                    }
+                }
+            }
+
+            #button-scroll {
+                left: .7rem !important;
             }
         }
     }
+}
+
+#button-scroll {
+    position: fixed;
+    bottom: 1rem;
+    left: .35rem;
 }

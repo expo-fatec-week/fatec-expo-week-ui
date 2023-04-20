@@ -4,8 +4,7 @@ import { CommonModule } from '@angular/common';
 import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
-import { TableModule } from 'primeng-lts/table';
-import { TabViewModule } from 'primeng-lts/tabview';
+import { MenubarModule } from 'primeng-lts/menubar';
 
 
 @NgModule({
@@ -15,8 +14,7 @@ import { TabViewModule } from 'primeng-lts/tabview';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    TableModule,
-    TabViewModule
+    MenubarModule
   ]
 })
 export class HomeModule { }

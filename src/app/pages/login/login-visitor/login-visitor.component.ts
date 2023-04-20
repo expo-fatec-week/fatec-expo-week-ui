@@ -24,9 +24,7 @@ export class LoginVisitorComponent {
     private alertService: AlertService,
     private router: Router,
     private tokenService: TokenService
-  ) {
-    this.tokenService.removeToken();
-  }
+  ) { }
 
   public tryLogin(): void {
     if (!this.requestLoginVisitor.email && !this.requestLoginVisitor.name) {

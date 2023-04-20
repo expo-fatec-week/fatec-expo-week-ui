@@ -9,14 +9,17 @@ import { ResponseEvent } from '../models/event';
 })
 export class EventService {
 
-  private urlBase = environment.urlApi + 'event';
+  private urlBase = environment.urlApi;
 
   constructor(
     private httpClient: HttpClient
   ) { }
 
   public listEvents(): Observable<Array<ResponseEvent>> {
-    return this.httpClient.get<Array<ResponseEvent>>(this.urlBase);
+    return this.httpClient.get<Array<ResponseEvent>>(this.urlBase + 'event');
   }
 
+  public listParticipatedEvents(personId: number): Observable<Array<ResponseEvent>> {
+    return this.httpClient.get<Array<ResponseEvent>>(this.urlBase + 'student/confirmed-events/' + String(personId));
+  }
 }

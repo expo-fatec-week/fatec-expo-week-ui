@@ -1,80 +1,14 @@
-<!-- <p-table responsiveLayout="stack" [value]="products">
-    <ng-template pTemplate="caption">
-        Stack
-    </ng-template>
-    <ng-template pTemplate="header" let-columns>
-        <tr>
-            <th>Name </th>
-            <th>Price</th>
-            <th>Category</th>
-            <th>Quantity</th>
-            <th>Status</th>
-            <th>Reviews</th>
-        </tr>
-    </ng-template>
-    <ng-template pTemplate="body" let-product let-columns="columns">
-        <tr>
-            <td><span class="p-column-title">Name</span>{{product.name}}</td>
-            <td><span class="p-column-title">Price</span>{{product.price | currency:'USD'}}</td>
-            <td><span class="p-column-title">Category</span>{{product.category}}</td>
-            <td><span class="p-column-title">Quantity</span>{{product.quantity}}</td>
-            <td><span class="p-column-title">Status</span><span
-                    [class]="'product-badge status-' + (product.inventoryStatus ? product.inventoryStatus.toLowerCase() : '')">{{product.inventoryStatus}}</span>
-            </td>
-            <td><span class="p-column-title">Reviews</span><p-rating [ngModel]="product.rating" [readonly]="true"
-                    [cancel]="false"></p-rating></td>
-        </tr>
-    </ng-template>
-</p-table> -->
-<section class="grid grid-nogutter flex-column align-items-center">
-    <div class="w-full text-center mt-4 mb-4">
-        <h1>Bem vindo(a):</h1>
-        <h1 class="text-2xl mt-2 mb-2">Nome do aluno ou visitante</h1>
-    </div>
-    <div class="col-12 md:col-11">
-        <p-tabView styleClass="tabview-custom">
-            <p-tabPanel>
-                <ng-template pTemplate="header">
-                    <i class="pi pi-id-card mr-2"></i>
-                    <span>Disponíveis</span>
-                </ng-template>
-                <!-- Tabela -->
-                <p-table responsiveLayout="stack" [value]="events">
-                    <ng-template pTemplate="caption">
-                        Eventos disponíveis
-                    </ng-template>
-                    <ng-template pTemplate="header" let-columns>
-                        <tr>
-                            <th>Assunto</th>
-                            <th>Tipo</th>
-                            <th>Data</th>
-                        </tr>
-                    </ng-template>
-                    <ng-template pTemplate="body" let-event let-columns="columns">
-                        <tr>
-                            <td><span class="p-column-title">Assunto</span>{{event.descricao}}</td>
-                            <td><span class="p-column-title">Tipo</span>{{event.tipo}}</td>
-                            <td><span class="p-column-title">Data</span>{{event.data_evento}}</td>
-                        </tr>
-                    </ng-template>
-                </p-table>
-                <!-- /Tabela -->
+<section>
+    <p-menubar [model]="menuItems" styleClass="toggle-menu">
+    </p-menubar>
 
-            </p-tabPanel>
-
-            <p-tabPanel header="Header I">
-                <ng-template pTemplate="header">
-                    <i class="pi pi-check mr-2"></i>
-                    <span>Participados</span>
-                </ng-template>
-                <p>At vero eos et accusamus et iusto odio dignissimos ducimus qui blanditiis praesentium voluptatum
-                    deleniti
-                    atque corrupti quos dolores et quas molestias excepturi sint occaecati
-                    cupiditate non provident, similique sunt in culpa qui officia deserunt mollitia animi, id est
-                    laborum et
-                    dolorum fuga. Et harum quidem rerum facilis est et expedita distinctio.
-                    Nam libero tempore, cum soluta nobis est eligendi optio cumque nihil impedit quo minus.</p>
-            </p-tabPanel>
-        </p-tabView>
+    <div class="w-full">
+        <div class="w-full text-center pt-4">
+            <h1>Bem vindo ao FatecExpoWeek</h1>
+            <h1>{{userName}}</h1>
+        </div>
+        <router-outlet></router-outlet>
     </div>
 </section>
+
+<button pButton icon="pi pi-chevron-circle-up" id="button-scroll" class="hidden" (click)="scrollToTop()"></button>
