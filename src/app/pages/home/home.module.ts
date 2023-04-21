@@ -5,6 +5,7 @@ import { HomeRoutingModule } from './home-routing.module';
 import { HomeComponent } from './home.component';
 
 import { MenubarModule } from 'primeng-lts/menubar';
+import { ButtonModule } from 'primeng-lts/button';
 
 
 @NgModule({
@@ -14,7 +15,8 @@ import { MenubarModule } from 'primeng-lts/menubar';
   imports: [
     CommonModule,
     HomeRoutingModule,
-    MenubarModule
+    MenubarModule,
+    ButtonModule
   ]
 })
 export class HomeModule { }

@@ -6,6 +6,7 @@ import { ParticipatedEventsComponent } from './participated-events/participated-
 import { AvailableEventsComponent } from './available-events/available-events.component';
 
 import { TableModule } from 'primeng-lts/table';
+import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
 
 @NgModule({
   declarations: [
@@ -15,7 +16,8 @@ import { TableModule } from 'primeng-lts/table';
   imports: [
     CommonModule,
     EventsRoutingModule,
-    TableModule
+    TableModule,
+    PrimengModule
   ]
 })
 export class EventsModule { }

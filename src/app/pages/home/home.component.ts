@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MenuItem } from 'primeng-lts/api';
+import { EnumStudentType } from 'src/app/models/EnumStudentType';
 import { AlertService } from 'src/app/services/alert.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -24,24 +25,63 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    console.log(this.tokenService.getUserLogged());
     window.onscroll = () => this.observerScroll();
-    this.menuItems = [
-      // {
-      // label: 'Eventos',
-      // items: [
-      {
-        label: 'Disponíveis',
-        icon: 'pi pi-lock-open',
-        routerLink: 'disponiveis'
-      },
-      {
-        label: 'Participados',
-        icon: 'pi pi-check',
-        routerLink: 'participados'
-      }
-      // ]
-      // }
-    ];
+    switch (this.tokenService.getUserLogged().userType) {
+      case EnumStudentType.ORGANIZADOR:
+        this.menuItems = [
+          {
+            label: 'Disponíveis',
+            icon: 'pi pi-lock-open',
+            routerLink: 'disponiveis'
+          },
+          {
+            label: 'Participados',
+            icon: 'pi pi-check',
+            routerLink: 'participados'
+          },
+          {
+            label: 'Validar Palestra',
+            icon: 'pi pi-users',
+            routerLink: 'validar-palestra'
+          }
+        ];
+        break;
+      case EnumStudentType.EXPOSITOR:
+        this.menuItems = [
+          {
+            label: 'Disponíveis',
+            icon: 'pi pi-lock-open',
+            routerLink: 'disponiveis'
+          },
+          {
+            label: 'Participados',
+            icon: 'pi pi-check',
+            routerLink: 'participados'
+          },
+          {
+            label: 'Confirmar presenças',
+            icon: 'pi pi-users',
+            routerLink: 'alunos'
+          }
+        ];
+        break;
+
+      default:
+        this.menuItems = [
+          {
+            label: 'Disponíveis',
+            icon: 'pi pi-lock-open',
+            routerLink: 'disponiveis'
+          },
+          {
+            label: 'Participados',
+            icon: 'pi pi-check',
+            routerLink: 'participados'
+          }
+        ];
+        break;
+    }
   }
 
   public scrollToTop() {
@@ -49,7 +89,7 @@ export class HomeComponent implements OnInit {
   }
 
   private observerScroll() {
-    if (document.body.scrollTop > 400 || document.documentElement.scrollTop > 400) {
+    if (document.body.scrollTop > 300 || document.documentElement.scrollTop > 300) {
       document.getElementById('button-scroll')?.classList.add('flex');
     } else {
       document.getElementById('button-scroll')?.classList.remove('flex');
@@ -57,8 +97,10 @@ export class HomeComponent implements OnInit {
   }
 
   public exit(): void {
-    sessionStorage.removeItem('access_token');
-    this.router.navigateByUrl('');
+    this.alertService.confirm('Deseja encerrar a sessão?', 'Sair', () => {
+      sessionStorage.removeItem('token');
+      this.router.navigateByUrl('');
+    });
   }
 
 }
