@@ -21,4 +21,5 @@ export interface UserLoggedIn {
     ra?: string;
     userType?: string;
     personId: number;
+    respEventId: number;
 }

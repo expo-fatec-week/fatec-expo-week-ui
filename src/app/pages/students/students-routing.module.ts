@@ -4,7 +4,8 @@ import { StandStudentsComponent } from './stand-students/stand-students.componen
 import { LectureStudentsComponent } from './lecture-students/lecture-students.component';
 
 const routes: Routes = [
-  { path: '', component: StandStudentsComponent },
+  { path: '', redirectTo: 'confirmar-presenca' },
+  { path: 'confirmar-presenca', component: StandStudentsComponent },
   { path: 'validar-palestra', component: LectureStudentsComponent }
 ];
 

@@ -87,32 +87,6 @@ input {
     align-items: center;
 }
 
-@media screen and (min-width: 768px) {
-
-    header {
-        height: 90px;
-
-        img {
-            width: 90px;
-        }
-    }
-
-    footer {
-        height: 30px;
-
-        em {
-            font-size: 1rem;
-
-        }
-    }
-
-    .p-datatable .p-datatable-tbody>tr>td:last-child {
-        border-bottom: 1px solid #dee2e6 !important;
-        border-top: none !important;
-    }
-
-}
-
 // Colors
 .p-menubar,
 .p-submenubar-header,
@@ -144,11 +118,6 @@ input {
     padding: .5rem !important;
 }
 
-.p-datatable .p-datatable-tbody>tr>td:last-child {
-    border-bottom: 3px solid #365360;
-    border-top: none;
-}
-
 .p-column-title {
     font-weight: bold;
     margin-right: 1rem;
@@ -165,4 +134,44 @@ input {
     button {
         padding: .3rem !important;
     }
+}
+
+.p-datatable .p-datatable-tbody>tr>td:last-child {
+    border-bottom: 1px solid #dee2e6 !important;
+    border-top: none !important;
+}
+
+@media screen and (min-width: 768px) {
+
+    header {
+        height: 90px;
+
+        img {
+            width: 90px;
+        }
+    }
+
+    footer {
+        height: 30px;
+
+        em {
+            font-size: 1rem;
+
+        }
+    }
+
+    .p-datatable .p-datatable-tbody>tr:last-child {
+        border-bottom: 1px solid #dee2e6 !important;
+        border-top: none !important;
+    }
+
+}
+
+@media screen and (min-width: 500px) {
+
+    // .p-datatable .p-datatable-tbody>tr>td:last-child {
+    //     border-bottom: 1px solid #dee2e6 !important;
+    //     border-top: none !important;
+    // }
+
 }

@@ -15,7 +15,7 @@
         <p class="text-center" [innerHTML]="config.data.message"></p>
     </div>
     <div class="mt-4 flex justify-content-center">
-        <button pButton type="button" label="Ok" (click)="close()"></button>
+        <button pButton type="button" label="Ok" class="p-button-primary" (click)="close()"></button>
     </div>
 </div>
 
@@ -33,7 +33,7 @@
         <button pButton pRipple type="button" icon="pi pi-times" label="Não" class="p-button-danger mr-1"
             (click)="config.data.confirmation.reject(); close()"></button>
 
-        <button pButton pRipple type="button" icon="pi pi-check" label="Sim" class="ml-1"
+        <button pButton pRipple type="button" icon="pi pi-check" label="Sim" class="ml-1 p-button-primary"
             (click)="config.data.confirmation.accept(); close()"></button>
     </div>
 </div>

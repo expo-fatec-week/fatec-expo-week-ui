@@ -23,12 +23,13 @@ export class TokenService {
 
   public getUserLogged(): UserLoggedIn {
     if (this.getToken()) {
-      const { name, email, userType, personId }: UserLoggedIn = jwt.default(this.getToken() ?? '');
+      const { name, email, userType, personId, respEventId }: UserLoggedIn = jwt.default(this.getToken() ?? '');
       return {
         name,
         email,
         userType,
-        personId
+        personId,
+        respEventId
       };
     }
     return {} as UserLoggedIn;

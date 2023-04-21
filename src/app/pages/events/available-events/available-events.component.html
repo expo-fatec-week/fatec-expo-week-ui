@@ -2,7 +2,10 @@
     <div class="card col-12 p-1 md:p-4">
         <p-table responsiveLayout="stack" [value]="events" [breakpoint]="'768px'">
             <ng-template pTemplate="caption">
-                {{events.length > 0 ? 'Eventos disponíveis' : 'Nenhum evento encontrado'}}
+                <div class="flex justify-content-between align-items-center">
+                    {{events.length > 0 ? 'Eventos disponíveis' : 'Nenhum evento encontrado'}}
+                    <button pButton icon="pi pi-refresh" (click)="listEvents()"></button>
+                </div>
             </ng-template>
             <ng-template pTemplate="header" let-columns>
                 <tr>
@@ -13,9 +16,18 @@
             </ng-template>
             <ng-template pTemplate="body" let-event let-columns="columns">
                 <tr>
-                    <td><span class="p-column-title">Assunto</span>{{event.descricao}}</td>
-                    <td><span class="p-column-title">Tipo</span>{{event.tipo}}</td>
-                    <td><span class="p-column-title">Data</span>{{event.data_evento | date : 'dd/MM/yyyy HH:mm'}}</td>
+                    <td>
+                        <span class="p-column-title">Assunto</span>
+                        <span class="text-right">{{event.descricao}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Tipo</span>
+                        <span class="text-right">{{event.tipo}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Data</span>
+                        <span class="text-right">{{event.data_evento | date : 'dd/MM/yyyy HH:mm'}}</span>
+                    </td>
                 </tr>
             </ng-template>
         </p-table>
