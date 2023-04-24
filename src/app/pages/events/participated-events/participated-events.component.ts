@@ -29,8 +29,7 @@ export class ParticipatedEventsComponent implements OnInit {
 
   ngOnInit(): void {
     const date = new Date();
-    // if (date.getDay() === 4 || date.getDay() === 5) {
-    if (date.getDay() === 1) {
+    if (date.getDay() === 4 || date.getDay() === 5) {
       this.lectureDay = true;
     }
 

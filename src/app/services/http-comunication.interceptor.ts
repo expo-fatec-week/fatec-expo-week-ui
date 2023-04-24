@@ -10,15 +10,13 @@ import { Observable, throwError } from 'rxjs';
 import { AlertService } from './alert.service';
 import { catchError } from 'rxjs/operators';
 import { TokenService } from './token.service';
-import { Router } from '@angular/router';
 
 @Injectable()
 export class HttpComunicationInterceptor implements HttpInterceptor {
 
   constructor(
     private alertService: AlertService,
-    private tokenService: TokenService,
-    private router: Router
+    private tokenService: TokenService
   ) { }
 
   intercept(request: HttpRequest<unknown>, next: HttpHandler): Observable<HttpEvent<unknown>> {

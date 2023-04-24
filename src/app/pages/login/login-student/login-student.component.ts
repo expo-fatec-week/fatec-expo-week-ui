@@ -31,7 +31,7 @@ export class LoginStudentComponent {
       .subscribe(
         res => {
           this.tokenService.saveToken(res.access_token);
-          this.router.navigateByUrl('home');
+          this.router.navigateByUrl('eventos');
         }
       );
   }
