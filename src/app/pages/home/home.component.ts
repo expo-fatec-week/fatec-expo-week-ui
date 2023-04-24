@@ -26,6 +26,11 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
     console.log(this.tokenService.getUserLogged());
+    const hoje = new Date();
+    console.log(hoje.toLocaleDateString());
+    console.log(hoje.getDay());
+    console.log(hoje.getDate());
+
     window.onscroll = () => this.observerScroll();
     switch (this.tokenService.getUserLogged().userType) {
       case EnumStudentType.ORGANIZADOR:
@@ -43,7 +48,7 @@ export class HomeComponent implements OnInit {
           {
             label: 'Validar Palestra',
             icon: 'pi pi-users',
-            routerLink: 'validar-palestra'
+            routerLink: 'alunos/validar-palestra'
           }
         ];
         break;
@@ -62,7 +67,7 @@ export class HomeComponent implements OnInit {
           {
             label: 'Confirmar presenças',
             icon: 'pi pi-users',
-            routerLink: 'alunos'
+            routerLink: 'alunos/confirmar-presenca'
           }
         ];
         break;

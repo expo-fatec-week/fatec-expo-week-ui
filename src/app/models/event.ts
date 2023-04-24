@@ -3,6 +3,14 @@ export interface ResponseEvent {
     descricao: string;
     tipo: string;
     data_evento: string;
+    dtcria?: string;
+    qtd_participantes?: number;
+}
+
+export interface ResponseEventLecture extends ResponseEvent {
+    cod_verificacao: string
+    dt_verificacao: string
+    validado_por: string
 }
 
 export interface RequestLectureCode {

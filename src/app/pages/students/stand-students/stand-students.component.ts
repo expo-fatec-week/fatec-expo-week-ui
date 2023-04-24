@@ -3,6 +3,7 @@ import { finalize, first } from 'rxjs/operators';
 import { RequestConfirmExhibit } from 'src/app/models/event';
 import { Student } from 'src/app/models/student';
 import { AlertService } from 'src/app/services/alert.service';
+import { EventService } from 'src/app/services/event.service';
 import { StudentsService } from 'src/app/services/students.service';
 import { TokenService } from 'src/app/services/token.service';
 
@@ -18,6 +19,7 @@ export class StandStudentsComponent implements OnInit {
   public requestConfirmExhibit: RequestConfirmExhibit
   constructor(
     private studentService: StudentsService,
+    private eventService: EventService,
     private tokenService: TokenService,
     private alertService: AlertService
   ) {
@@ -52,7 +54,7 @@ export class StandStudentsComponent implements OnInit {
       id_pessoa_validacao: personId,
       id_pessoa_participante: personIdParticiped
     };
-    this.studentService.validadePresenceStand(this.requestConfirmExhibit)
+    this.eventService.validadePresenceStand(this.requestConfirmExhibit)
       .pipe(first(),
         finalize(() => {
           this.isBlock = false;
