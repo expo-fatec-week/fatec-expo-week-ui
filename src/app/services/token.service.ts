@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import * as jwt from 'jwt-decode';
 import { UserLoggedIn } from '../models/login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -8,6 +9,7 @@ import { UserLoggedIn } from '../models/login';
 export class TokenService {
 
   private readonly token = 'token';
+  constructor(private router: Router) { }
 
   public saveToken(token: string): void {
     sessionStorage.setItem(this.token, token);
@@ -19,6 +21,7 @@ export class TokenService {
 
   public removeToken(): void {
     sessionStorage.removeItem(this.token);
+    this.router.navigateByUrl('');
   }
 
   public getUserLogged(): UserLoggedIn {

@@ -36,6 +36,9 @@ export class HttpComunicationInterceptor implements HttpInterceptor {
               } else {
                 this.alertService.warning(error.error.message);
               }
+              if (error.error === 'Unauthorized' || error.error.message === 'Unauthorized') {
+                this.tokenService.removeToken();
+              }
             } else if (error.status === 0 || error.status === 500) {
               this.alertService.error('Falha ao tentar se comunicar com o servidor, tente novamente mais tarde.');
             } else {
