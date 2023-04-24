@@ -7,7 +7,7 @@ import { EventService } from 'src/app/services/event.service';
 @Component({
   selector: 'app-available-events',
   templateUrl: './available-events.component.html',
-  styleUrls: ['./available-events.component.scss']
+  styleUrls: ['../events.component.scss']
 })
 export class AvailableEventsComponent implements OnInit {
 
@@ -33,8 +33,6 @@ export class AvailableEventsComponent implements OnInit {
       .subscribe(
         success => {
           this.events = success;
-        }, error => {
-          this.alertService.error(error.message);
         }
       );
   }

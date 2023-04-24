@@ -25,12 +25,6 @@ export class HomeComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    console.log(this.tokenService.getUserLogged());
-    const hoje = new Date();
-    console.log(hoje.toLocaleDateString());
-    console.log(hoje.getDay());
-    console.log(hoje.getDate());
-
     window.onscroll = () => this.observerScroll();
     switch (this.tokenService.getUserLogged().userType) {
       case EnumStudentType.ORGANIZADOR:

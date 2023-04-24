@@ -1,4 +1,4 @@
-<section class="grid grid-nogutter justify-content-center">
+<div class="grid grid-nogutter justify-content-center">
     <div class="card col-12 p-1 md:p-4">
         <p-table #dt responsiveLayout="stack" [value]="students" [breakpoint]="'500px'" [globalFilterFields]="['nome']">
             <ng-template pTemplate="caption">
@@ -30,7 +30,7 @@
             </ng-template>
         </p-table>
     </div>
-</section>
+</div>
 
 <p-blockUI [blocked]="isBlock">
     <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>

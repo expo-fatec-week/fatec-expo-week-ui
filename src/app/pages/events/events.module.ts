@@ -7,6 +7,7 @@ import { AvailableEventsComponent } from './available-events/available-events.co
 
 import { TableModule } from 'primeng-lts/table';
 import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
+import { OverlayPanelModule } from 'primeng-lts/overlaypanel';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
     CommonModule,
     EventsRoutingModule,
     TableModule,
-    PrimengModule
+    PrimengModule,
+    OverlayPanelModule
   ]
 })
 export class EventsModule { }

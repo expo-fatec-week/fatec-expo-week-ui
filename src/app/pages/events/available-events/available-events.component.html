@@ -1,10 +1,10 @@
-<section class="grid grid-nogutter justify-content-center">
+<div class="grid grid-nogutter justify-content-center">
     <div class="card col-12 p-1 md:p-4">
         <p-table responsiveLayout="stack" [value]="events" [breakpoint]="'768px'">
             <ng-template pTemplate="caption">
                 <div class="flex justify-content-between align-items-center">
                     {{events.length > 0 ? 'Eventos disponíveis' : 'Nenhum evento encontrado'}}
-                    <button pButton icon="pi pi-refresh" (click)="listEvents()"></button>
+                    <button pButton icon="pi pi-refresh" class="p-button-primary" (click)="listEvents()"></button>
                 </div>
             </ng-template>
             <ng-template pTemplate="header" let-columns>
@@ -32,7 +32,7 @@
             </ng-template>
         </p-table>
     </div>
-</section>
+</div>
 
 <p-blockUI [blocked]="isBlock">
     <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>

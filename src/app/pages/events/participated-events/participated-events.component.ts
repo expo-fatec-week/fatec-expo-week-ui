@@ -9,11 +9,12 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-participated-events',
   templateUrl: './participated-events.component.html',
-  styleUrls: ['./participated-events.component.scss']
+  styleUrls: ['../events.component.scss']
 })
 export class ParticipatedEventsComponent implements OnInit {
 
   public isBlock = false;
+  public lectureDay = false;
   public events: ResponseEvent[] = [];
   private requestConfirmLecture: RequestConfirmLecture;
 
@@ -27,6 +28,12 @@ export class ParticipatedEventsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    const date = new Date();
+    // if (date.getDay() === 4 || date.getDay() === 5) {
+    if (date.getDay() === 1) {
+      this.lectureDay = true;
+    }
+
     this.listEvents();
   }
 
@@ -46,7 +53,9 @@ export class ParticipatedEventsComponent implements OnInit {
       );
   }
 
-  public confirmPresenceLecture(): void {
+  public confirmPresenceLecture(code: string): void {
+    this.requestConfirmLecture.id_pessoa = this.tokenService.getUserLogged().personId;
+    this.requestConfirmLecture.cod_validacao = code;
     this.isBlock = true;
     this.eventService.confirmPresenceLecture(this.requestConfirmLecture)
       .pipe(first(),

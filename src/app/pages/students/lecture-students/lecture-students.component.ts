@@ -8,7 +8,7 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-lecture-students',
   templateUrl: './lecture-students.component.html',
-  styleUrls: ['./lecture-students.component.scss']
+  styleUrls: ['../students.component.scss']
 })
 export class LectureStudentsComponent implements OnInit {
 

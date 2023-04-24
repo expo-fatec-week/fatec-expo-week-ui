@@ -33,7 +33,7 @@ export class HttpComunicationInterceptor implements HttpInterceptor {
         catchError(error => {
           if (error instanceof HttpErrorResponse) {
             if (error.status >= 400 && error.status < 500) {
-              if (error.error === typeof '') {
+              if (error.error?.length > 0) {
                 this.alertService.warning(error.error);
               } else {
                 this.alertService.warning(error.error.message);
@@ -41,7 +41,7 @@ export class HttpComunicationInterceptor implements HttpInterceptor {
             } else if (error.status === 0 || error.status === 500) {
               this.alertService.error('Falha ao tentar se comunicar com o servidor, tente novamente mais tarde.');
             } else {
-              if (error.error === typeof '') {
+              if (error.error?.length > 0) {
                 this.alertService.error(error.error);
               } else {
                 this.alertService.error(error.error.message);

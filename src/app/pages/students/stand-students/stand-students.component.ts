@@ -10,7 +10,7 @@ import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-stand-students',
   templateUrl: './stand-students.component.html',
-  styleUrls: ['./stand-students.component.scss']
+  styleUrls: ['../students.component.scss']
 })
 export class StandStudentsComponent implements OnInit {
 

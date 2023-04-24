@@ -100,11 +100,14 @@ input {
 }
 
 .p-datatable .p-datatable-thead>tr>th,
-.p-datatable .p-datatable-header {
+.p-datatable .p-datatable-header,
+.p-overlaypanel-content {
     background-color: var(--bg-i-dark-sec) !important;
 }
 
-.p-button-primary {
+.p-button,
+.p-button-primary,
+.p-overlaypanel .p-overlaypanel-close {
     background-color: #365360 !important;
     border-color: #365360 !important;
 }
