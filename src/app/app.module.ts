@@ -13,6 +13,8 @@ import { HttpComunicationInterceptor } from './services/http-comunication.interc
 import { ButtonModule } from 'primeng-lts/button';
 import { DynamicDialogModule, DialogService, DynamicDialogRef } from 'primeng-lts/dynamicdialog';
 import { ConfirmDialogModule } from 'primeng-lts/confirmdialog';
+import { ServiceWorkerModule } from '@angular/service-worker';
+import { environment } from '../environments/environment';
 
 @NgModule({
   declarations: [
@@ -28,7 +30,8 @@ import { ConfirmDialogModule } from 'primeng-lts/confirmdialog';
     HttpClientModule,
     ButtonModule,
     DynamicDialogModule,
-    ConfirmDialogModule
+    ConfirmDialogModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   bootstrap: [AppComponent],
   providers: [
