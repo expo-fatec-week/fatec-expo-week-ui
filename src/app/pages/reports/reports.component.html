@@ -1,0 +1,41 @@
+<div class="grid grid-nogutter justify-content-center">
+    <p-selectButton [options]="filterTypes" [(ngModel)]="selectedFilterType" optionLabel="name"></p-selectButton>
+
+    <div class="card col-12 p-1 md:p-4">
+        <p-table responsiveLayout="stack" [value]="responseStudents" [breakpoint]="'768px'">
+            <ng-template pTemplate="caption">
+                <div class="flex justify-content-between align-items-center">
+                    {{responseStudents.length > 0 ? 'Eventos participados' : 'Nenhum evento encontrado'}}
+                    <button pButton icon="pi pi-refresh" class="p-button-primary" (click)="list()"></button>
+                </div>
+            </ng-template>
+            <ng-template pTemplate="header" let-columns>
+                <tr>
+                    <th>RA</th>
+                    <th>Nome</th>
+                    <th>Qtd. Participações</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-person let-columns="columns">
+                <tr>
+                    <td>
+                        <span class="p-column-title">RA</span>
+                        <span class="text-right">{{person.ra}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Nome</span>
+                        <span class="text-right">{{person.nome}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Qtd. Participações</span>
+                        <span class="text-right">{{person.qtd_eventos_participados}}</span>
+                    </td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>
+
+<p-blockUI [blocked]="isBlock">
+    <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
+</p-blockUI>

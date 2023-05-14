@@ -1,3 +1,8 @@
+export interface RequestLoginAdministrator {
+    email: string;
+    password: string;
+}
+
 export interface RequestLoginStudent {
     ra: string;
     email: string;
@@ -23,3 +28,11 @@ export interface UserLoggedIn {
     personId: number;
     respEventId: number;
 }
+
+export interface RequestUpdatePasswordAdministrator {
+    email: string
+    oldPassword: string
+    newPassword: string
+}
+
+export type ResponseVisitor = RequestLoginVisitor;

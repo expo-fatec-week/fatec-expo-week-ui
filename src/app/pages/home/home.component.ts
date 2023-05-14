@@ -27,6 +27,25 @@ export class HomeComponent implements OnInit {
   ngOnInit(): void {
     window.onscroll = () => this.observerScroll();
     switch (this.tokenService.getUserLogged().userType) {
+      case 'ADMINISTRADOR':
+        this.menuItems = [
+          {
+            label: 'Eventos disponíveis',
+            icon: 'pi pi-lock-open',
+            routerLink: 'disponiveis'
+          },
+          {
+            label: 'Relatórios',
+            icon: 'pi pi-file',
+            routerLink: 'relatorios'
+          },
+          {
+            label: 'Visitantes',
+            icon: 'pi pi-users',
+            routerLink: 'visitantes'
+          }
+        ];
+        break;
       case EnumStudentType.ORGANIZADOR:
         this.menuItems = [
           {

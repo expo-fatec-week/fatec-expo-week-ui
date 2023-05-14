@@ -1,5 +1,5 @@
 <div class="grid grid-nogutter justify-content-center">
-    <button *ngIf="lectureDay" pButton class="p-button-primary mb-4" label="Confirmar presença"
+    <button pButton class="p-button-primary mb-4" label="Confirmar presença"
         (click)="op.toggle($event)"></button>
     <div class="card col-12 p-1 md:p-4">
         <p-table responsiveLayout="stack" [value]="events" [breakpoint]="'768px'">
