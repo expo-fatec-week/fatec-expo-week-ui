@@ -3,6 +3,10 @@ export interface RequestLoginAdministrator {
     password: string;
 }
 
+export interface RequestNewPasswordAdministrator extends RequestLoginAdministrator {
+    newPassword: string;
+}
+
 export interface RequestLoginStudent {
     ra: string;
     email: string;
@@ -27,12 +31,6 @@ export interface UserLoggedIn {
     userType?: string;
     personId: number;
     respEventId: number;
-}
-
-export interface RequestUpdatePasswordAdministrator {
-    email: string
-    oldPassword: string
-    newPassword: string
 }
 
 export type ResponseVisitor = RequestLoginVisitor;

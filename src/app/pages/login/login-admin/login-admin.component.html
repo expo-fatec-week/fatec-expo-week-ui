@@ -5,8 +5,8 @@
             <h2>Bem vindo <br>
                 Administrador!</h2>
         </ng-template>
-        <form (ngSubmit)="doLogin()" ngNativeValidate>
-            <div class="w-full">
+        <form (ngSubmit)="definePassword ? newPassword() : doLogin()" ngNativeValidate>
+            <div class="w-full mb-4">
                 <span class="p-float-label mb-4 w-full">
                     <input class="w-full" id="email" name="email" type="email" pInputText
                         [(ngModel)]="requestLogin.email" required maxlength="70">
@@ -16,6 +16,17 @@
                     <input class="w-full" id="password" name="password" type="password" pInputText
                         [(ngModel)]="requestLogin.password" required>
                     <label for="password">Senha</label>
+                </span>
+
+                <span *ngIf="definePassword" class="p-float-label mb-4 w-full">
+                    <input class="w-full" id="password" name="password" type="password" pInputText
+                        [(ngModel)]="requestNewPassword.newPassword" required>
+                    <label for="password">Senha</label>
+                </span>
+
+                <span class="w-full mb-4">
+                    <p-checkbox name="definePassword" [binary]="true" label="Definir uma nova senha" class="mb-2"
+                        [(ngModel)]="definePassword"></p-checkbox>
                 </span>
             </div>
             <div>

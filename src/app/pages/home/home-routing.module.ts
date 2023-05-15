@@ -10,17 +10,17 @@ const routes: Routes = [
     children: [
       {
         path: '',
-        canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('../events/events.module').then(m => m.EventsModule)
       },
       {
         path: 'alunos',
-        canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('../students/students.module').then(m => m.StudentsModule)
       },
       {
         path: 'relatorios',
-        canActivate: [AuthGuard],
+        canLoad: [AuthGuard],
         loadChildren: () => import('../reports/reports.module').then(m => m.ReportsModule)
       }
     ]

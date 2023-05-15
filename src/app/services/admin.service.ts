@@ -4,7 +4,7 @@ import { Observable } from 'rxjs';
 import { environment } from 'src/environments/environment';
 import { ResponseStudentByCourse } from '../models/student';
 import { ResponseCourse } from '../models/course';
-import { RequestUpdatePasswordAdministrator, ResponseVisitor } from '../models/login';
+import { RequestNewPasswordAdministrator, ResponseVisitor } from '../models/login';
 
 @Injectable({
   providedIn: 'root'
@@ -27,7 +27,7 @@ export class AdminService {
     return this.httpClient.get<ResponseVisitor[]>(this.urlApi + 'visitors');
   }
 
-  public updatePassword(updatePasswordAdministrator: RequestUpdatePasswordAdministrator): Observable<string> {
-    return this.httpClient.put<string>(this.urlApi + 'update', updatePasswordAdministrator);
+  public updatePassword(requestNewPassword: RequestNewPasswordAdministrator): Observable<string> {
+    return this.httpClient.put<string>(this.urlApi + 'update', requestNewPassword);
   }
 }
