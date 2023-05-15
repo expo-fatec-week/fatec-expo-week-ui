@@ -1,0 +1,38 @@
+:host {
+    ::ng-deep {
+        .p-selectbutton .p-button.p-highlight {
+            background-color: white !important;
+
+            span {
+                color: #365360 !important;
+                font-weight: bold;
+            }
+        }
+
+        .p-dropdown {
+            width: 350px;
+            color: #365360 !important;
+
+            span {
+                color: #365360 !important;
+            }
+
+            .p-dropdown-empty-message {
+                color: #365360 !important;
+            }
+
+            .p-dropdown-items {
+                width: 330px;
+            }
+
+        }
+
+        @media screen and (min-width: 500px) {
+
+            .p-dropdown,
+            .p-dropdown-items {
+                width: 100% !important;
+            }
+        }
+    }
+}

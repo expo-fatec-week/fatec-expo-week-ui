@@ -33,7 +33,7 @@ export class LoginAdminComponent {
       .subscribe(
         res => {
           this.tokenService.saveToken(res.access_token);
-          this.router.navigateByUrl('relatorios');
+          this.router.navigateByUrl('backoffice/relatorios');
         }
       );
   }

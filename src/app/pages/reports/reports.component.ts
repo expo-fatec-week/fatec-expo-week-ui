@@ -17,12 +17,13 @@ export class ReportsComponent implements OnInit {
   public isBlock = false;
   public filterTypes: SelectItem[];
   public selectedFilterType: SelectItem;
-  public responseStudents: ResponseStudentByCourse[];
-  public responseVisitors: ResponseVisitor[];
-  public courses: ResponseCourse[];
+  public responseStudents!: ResponseStudentByCourse[];
+  public responseVisitors!: ResponseVisitor[];
+  public courses!: ResponseCourse[];
   public selectedCourse!: ResponseCourse;
-  private readonly students = 'students';
-  private readonly visitors = 'visitors';
+  public columnsOfTable!: Array<{ field: string, header: string }>
+  public readonly students = 'students';
+  public readonly visitors = 'visitors';
 
   constructor(
     private adminService: AdminService,
@@ -33,18 +34,18 @@ export class ReportsComponent implements OnInit {
       { label: 'Visitantes', value: this.visitors }
     ];
     this.selectedFilterType = this.filterTypes[0];
-    this.responseStudents = [];
-    this.responseVisitors = [];
-    this.courses = [];
+    this.initSelections();
   }
 
   ngOnInit(): void {
-    console.log('Oi');
+    if (this.selectedFilterType.value === this.students) {
+      this.listCourses();
+    }
   }
 
   public list(): void {
     if (this.selectedFilterType.value === this.students) {
-      if (this.selectedCourse.id_curso) {
+      if (this.selectedCourse?.id_curso) {
         return this.listStudentsByCourse(this.selectedCourse.id_curso);
       } else {
         this.alertService.warning('Selecione o curso desejado');
@@ -63,12 +64,17 @@ export class ReportsComponent implements OnInit {
         }))
       .subscribe(
         success => {
-          this.courses = success;
+          if (success?.length > 0) {
+            this.courses = success;
+          } else {
+            this.alertService.info('Não existem cursos cadastrados.');
+          }
         }
       );
   }
 
   private listStudentsByCourse(courseId: number): void {
+    this.responseStudents = [];
     this.isBlock = true;
     this.adminService.listStudentsByCourse(courseId)
       .pipe(first(),
@@ -77,12 +83,17 @@ export class ReportsComponent implements OnInit {
         }))
       .subscribe(
         success => {
-          this.responseStudents = success;
+          if (success?.length > 0) {
+            this.responseStudents = success;
+          } else {
+            this.alertService.info('Nenhum aluno deste curso participou do evento.');
+          }
         }
       );
   }
 
   private listVisitors(): void {
+    this.responseVisitors = [];
     this.isBlock = true;
     this.adminService.listVisitors()
       .pipe(first(),
@@ -91,11 +102,43 @@ export class ReportsComponent implements OnInit {
         }))
       .subscribe(
         success => {
-          this.responseVisitors = success;
+          if (success?.length > 0) {
+            this.responseVisitors = success;
+          } else {
+            this.alertService.info('Não existem visitantes cadastrados.');
+          }
         }
       );
   }
 
+  public onChangeFilterType(): void {
+    this.initSelections();
+    if (this.selectedFilterType.value === this.students) {
+      this.listCourses();
+    } else {
+      this.listVisitors();
+    }
+  }
 
+  private initSelections(): void {
+    if (this.selectedFilterType.value === this.students) {
+      this.columnsOfTable = [
+        { field: 'ra', header: 'RA' },
+        { field: 'nome', header: 'Nome' },
+        { field: 'qtd_eventos_participados', header: 'Qtd. Participações' }
+      ];
+    } else {
+      this.columnsOfTable = [
+        { field: 'cpf', header: 'CPF' },
+        { field: 'nome', header: 'Nome' },
+        { field: 'email', header: 'E-mail' },
+        { field: 'telefone', header: 'Telefone' }
+      ];
+    }
+    this.responseStudents = [];
+    this.responseVisitors = [];
+    this.courses = [];
+    this.selectedCourse = {} as ResponseCourse;
+  }
 
 }

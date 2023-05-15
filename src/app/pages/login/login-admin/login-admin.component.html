@@ -2,7 +2,8 @@
     <p-card class="col-11 md:col-6 lg:col-4 xl:col-3" #blockedContent>
         <ng-template pTemplate="header">
             <i class="pi pi-user mt-4 mb-2"></i>
-            <h2>Bem vindo Aluno!</h2>
+            <h2>Bem vindo <br>
+                Administrador!</h2>
         </ng-template>
         <form (ngSubmit)="doLogin()" ngNativeValidate>
             <div class="w-full">
@@ -12,7 +13,7 @@
                     <label for="email">E-mail</label>
                 </span>
                 <span class="p-float-label mb-4 w-full">
-                    <input class="w-full" id="password" name="password" type="text" pInputText
+                    <input class="w-full" id="password" name="password" type="password" pInputText
                         [(ngModel)]="requestLogin.password" required>
                     <label for="password">Senha</label>
                 </span>

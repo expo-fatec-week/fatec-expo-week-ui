@@ -3,7 +3,7 @@
         <p-table responsiveLayout="stack" [value]="events" [breakpoint]="'768px'">
             <ng-template pTemplate="caption">
                 <div class="flex justify-content-between align-items-center">
-                    {{events.length > 0 ? 'Eventos disponíveis' : 'Nenhum evento encontrado'}}
+                    {{events.length > 0 ? events.length + ' Eventos disponíveis' : 'Nenhum evento encontrado'}}
                     <button pButton icon="pi pi-refresh" class="p-button-primary" (click)="listEvents()"></button>
                 </div>
             </ng-template>

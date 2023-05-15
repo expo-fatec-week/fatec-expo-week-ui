@@ -107,7 +107,8 @@ input {
 
 .p-button,
 .p-button-primary,
-.p-overlaypanel .p-overlaypanel-close {
+.p-overlaypanel .p-overlaypanel-close,
+.p-menuitem-link:hover {
     background-color: #365360 !important;
     border-color: #365360 !important;
 }
@@ -115,6 +116,11 @@ input {
 .p-button-danger {
     background-color: #e00002 !important;
     border-color: #e00002 !important;
+}
+
+.p-button-success {
+    background: #689F38 !important;
+    border-color: #689F38 !important;
 }
 
 .p-datatable .p-datatable-tbody>tr>td {

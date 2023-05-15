@@ -11,7 +11,7 @@ import { RequestUpdatePasswordAdministrator, ResponseVisitor } from '../models/l
 })
 export class AdminService {
 
-  private urlApi = environment.urlApi + 'administration';
+  private urlApi = environment.urlApi + 'administration/';
 
   constructor(private httpClient: HttpClient) { }
 

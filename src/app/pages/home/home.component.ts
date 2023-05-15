@@ -38,11 +38,6 @@ export class HomeComponent implements OnInit {
             label: 'Relatórios',
             icon: 'pi pi-file',
             routerLink: 'relatorios'
-          },
-          {
-            label: 'Visitantes',
-            icon: 'pi pi-users',
-            routerLink: 'visitantes'
           }
         ];
         break;

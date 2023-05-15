@@ -9,7 +9,7 @@ import { RequestLoginAdministrator, RequestLoginStudent, ResponseLogin } from '.
 })
 export class LoginService {
 
-  private urlBase = environment.urlApi + 'login';
+  private urlBase = environment.urlApi + 'login/';
 
   constructor(
     private httpClient: HttpClient
