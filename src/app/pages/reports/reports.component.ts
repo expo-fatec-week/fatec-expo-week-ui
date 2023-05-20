@@ -47,8 +47,6 @@ export class ReportsComponent implements OnInit {
     if (this.selectedFilterType.value === this.students) {
       if (this.selectedCourse?.id_curso) {
         return this.listStudentsByCourse(this.selectedCourse.id_curso);
-      } else {
-        this.alertService.warning('Selecione o curso desejado');
       }
     } else {
       return this.listVisitors();

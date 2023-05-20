@@ -64,6 +64,7 @@ export class ParticipatedEventsComponent implements OnInit {
       .subscribe(
         success => {
           this.alertService.info(success);
+          this.listEvents();
         }
       );
   }

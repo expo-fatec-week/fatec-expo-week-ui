@@ -12,6 +12,7 @@ export class AvailableEventsComponent implements OnInit {
 
   public isBlock = false;
   public events: ResponseEvent[] = [];
+  public currentFullDate = new Date().toISOString();
 
   constructor(
     private eventService: EventService

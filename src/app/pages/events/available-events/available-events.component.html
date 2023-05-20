@@ -11,11 +11,12 @@
                 <tr>
                     <th>Assunto</th>
                     <th>Tipo</th>
+                    <th>Local</th>
                     <th>Data</th>
                 </tr>
             </ng-template>
             <ng-template pTemplate="body" let-event let-columns="columns">
-                <tr>
+                <tr [ngClass]="{ 'unavailable': event.data_evento < currentFullDate }">
                     <td>
                         <span class="p-column-title">Assunto</span>
                         <span class="text-right">{{event.descricao}}</span>
@@ -23,6 +24,10 @@
                     <td>
                         <span class="p-column-title">Tipo</span>
                         <span class="text-right">{{event.tipo}}</span>
+                    </td>
+                    <td>
+                        <span class="p-column-title">Local</span>
+                        <span class="text-right">{{event.local}}</span>
                     </td>
                     <td>
                         <span class="p-column-title">Data</span>
