@@ -3,7 +3,8 @@
   "version": "2023.04.13",
   "scripts": {
     "start": "ng lint && ng serve --open",
-    "production": "npm cache clean -f && npm install && ng lint && ng build --aot --configuration=production --base-href ."
+    "production": "npm cache clean -f && npm install && ng lint && ng build --aot --configuration=production --base-href .",
+    "build": "ng build"
   },
   "private": true,
   "dependencies": {
