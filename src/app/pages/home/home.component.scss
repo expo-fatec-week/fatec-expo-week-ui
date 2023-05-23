@@ -1,0 +1,36 @@
+:host {
+    ::ng-deep {
+
+        .p-menu {
+            width: max-content;
+            min-height: var(--min-h-main-section);
+
+            .p-menuitem-link .p-menuitem-text {
+                display: none;
+            }
+
+            .p-menuitem,
+            .p-menuitem-link {
+                :hover {
+                    background-color: var(--bg-o-dark);
+                }
+            }
+        }
+
+        @media screen and (min-width: 500px) {
+            .p-menu {
+                left: 0;
+            }
+
+            #button-scroll {
+                left: .7rem !important;
+            }
+        }
+    }
+}
+
+#button-scroll {
+    position: fixed;
+    bottom: 1rem;
+    left: .35rem;
+}

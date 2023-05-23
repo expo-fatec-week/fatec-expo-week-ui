@@ -1,7 +1,7 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
-import { RequestLoginVisitor, ResponseLoginVisitor } from '../models/login';
+import { RequestLoginVisitor } from '../models/login';
 import { Observable } from 'rxjs';
 
 @Injectable({
@@ -15,8 +15,8 @@ export class RegisterUsersService {
     private httpClient: HttpClient
   ) { }
 
-  public registerVisitor(requestVisitor: RequestLoginVisitor): Observable<ResponseLoginVisitor> {
-    return this.httpClient.post<ResponseLoginVisitor>(this.urlBase + 'user', requestVisitor);
+  public registerVisitor(requestVisitor: RequestLoginVisitor): Observable<{ message: string }> {
+    return this.httpClient.post<{ message: string }>(this.urlBase + 'visitor', requestVisitor);
   }
 
 }

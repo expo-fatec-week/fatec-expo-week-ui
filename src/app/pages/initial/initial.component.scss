@@ -4,15 +4,17 @@ section {
 
 .base-buttons {
     border: solid white;
-    width: 8rem;
-    height: 8rem;
+    width: 10rem;
+    height: 10rem;
     border-radius: 50%;
-    margin: 1rem;
+    margin: 1.5rem;
     cursor: pointer;
+
     i {
-        font-size: 2.5rem;
+        font-size: 3rem;
     }
+
     h1 {
-        font-size: 1.2rem;
+        font-size: 1.5rem;
     }
 }

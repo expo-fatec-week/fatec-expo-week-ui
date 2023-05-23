@@ -1,4 +1,7 @@
 import { Injectable } from '@angular/core';
+import * as jwt from 'jwt-decode';
+import { UserLoggedIn } from '../models/login';
+import { Router } from '@angular/router';
 
 @Injectable({
   providedIn: 'root'
@@ -6,41 +9,33 @@ import { Injectable } from '@angular/core';
 export class TokenService {
 
   private readonly token = 'token';
-  private readonly personId = 'personId';
-  private readonly name = 'name';
+  constructor(private router: Router) { }
 
   public saveToken(token: string): void {
-    localStorage.setItem(this.token, token);
-  }
-
-  public savePerson(personId: number, name: string): void {
-    localStorage.setItem(this.personId, String(personId));
-    localStorage.setItem(this.name, name);
+    sessionStorage.setItem(this.token, token);
   }
 
   public getToken(): string | null {
-    return localStorage.getItem(this.token);
-  }
-
-  public getPerson(): { personId: number | null, name: string | null } | null {
-    const personId = Number(localStorage.getItem(this.personId));
-    const name = localStorage.getItem(this.name);
-    if (personId != 0 && name) return { personId, name };
-    return null;
+    return sessionStorage.getItem(this.token);
   }
 
   public removeToken(): void {
-    localStorage.removeItem(this.token);
+    sessionStorage.removeItem(this.token);
+    this.router.navigateByUrl('');
   }
 
-  public removePerson(): void {
-    localStorage.removeItem(this.personId);
-    localStorage.removeItem(this.name);
-  }
-
-  public isAuthenticated(): boolean {
-    if (this.getPerson() || this.getToken()) return true;
-    return false;
+  public getUserLogged(): UserLoggedIn {
+    if (this.getToken()) {
+      const { name, email, userType, personId, respEventId }: UserLoggedIn = jwt.default(this.getToken() ?? '');
+      return {
+        name,
+        email,
+        userType,
+        personId,
+        respEventId
+      };
+    }
+    return {} as UserLoggedIn;
   }
 
 }

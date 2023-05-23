@@ -1,11 +1,15 @@
+export interface RequestLoginAdministrator {
+    email: string;
+    password: string;
+}
+
+export interface RequestNewPasswordAdministrator extends RequestLoginAdministrator {
+    newPassword: string;
+}
+
 export interface RequestLoginStudent {
     ra: string;
     email: string;
-}
-
-export interface RequestLoginPrivate {
-    user: string;
-    password: string;
 }
 
 export interface RequestLoginVisitor {
@@ -17,23 +21,16 @@ export interface RequestLoginVisitor {
 }
 
 export interface ResponseLogin {
-    id_pessoa: number;
-    nome: string;
-    telefone: string;
+    access_token: string;
+}
+
+export interface UserLoggedIn {
+    name: string;
     email: string;
+    ra?: string;
+    userType?: string;
+    personId: number;
+    respEventId: number;
 }
 
-export interface ResponseLoginStudent extends ResponseLogin {
-    ra: string;
-    descricao: string;
-    semestre: number;
-}
-
-export interface ResponseLoginVisitor extends ResponseLogin {
-    cpf: string;
-}
-
-export interface ResponseLoginPrivate {
-    message: string;
-    token: string;
-}
+export type ResponseVisitor = RequestLoginVisitor;

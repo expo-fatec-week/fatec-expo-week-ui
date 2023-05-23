@@ -3,6 +3,7 @@ import { RequestLoginStudent } from 'src/app/models/login';
 import { LoginService } from 'src/app/services/login.service';
 import { first, finalize } from 'rxjs/operators';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-login-student',
@@ -16,19 +17,21 @@ export class LoginStudentComponent {
 
   constructor(
     private loginService: LoginService,
-    private router: Router
+    private router: Router,
+    private tokenService: TokenService
   ) { }
 
   public doLogin(): void {
     this.isBlock = true;
-    this.loginService.loginStudent(this.requestLoginStudent.ra, this.requestLoginStudent.email)
+    this.loginService.loginStudent(this.requestLoginStudent)
       .pipe(first(),
         finalize(() => {
           this.isBlock = false;
         }))
       .subscribe(
-        () => {
-          this.router.navigateByUrl('home');
+        res => {
+          this.tokenService.saveToken(res.access_token);
+          this.router.navigateByUrl('eventos');
         }
       );
   }

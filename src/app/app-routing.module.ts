@@ -7,7 +7,8 @@ import { AuthGuard } from './services/auth.guard';
 const routes: Routes = [
   { path: '', component: InitialComponent },
   { path: 'login', loadChildren: () => import('./pages/login/login.module').then(m => m.LoginModule) },
-  { path: 'home', canActivate: [AuthGuard], loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
+  { path: 'backoffice', canActivate: [AuthGuard], loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
+  { path: 'eventos', canActivate: [AuthGuard], loadChildren: () => import('./pages/home/home.module').then(m => m.HomeModule) },
   { path: '**', component: NotFoundComponent, pathMatch: 'full' }
 ];
 

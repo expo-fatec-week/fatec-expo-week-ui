@@ -1,1 +1,17 @@
-<p>home works!</p>
+<section>
+    <p-menubar [model]="menuItems" styleClass="toggle-menu">
+        <div class="p-2 cursor-pointer" (click)="exit()">
+            <i class="pi pi-sign-out"></i>
+        </div>
+    </p-menubar>
+
+    <div class="w-full">
+        <div class="w-full text-center pt-4 pb-4">
+            <h1>Bem vindo ao FatecExpoWeek</h1>
+            <h1>{{userName}}</h1>
+        </div>
+        <router-outlet></router-outlet>
+    </div>
+</section>
+
+<button pButton icon="pi pi-chevron-circle-up" id="button-scroll" class="hidden p-button-primary" (click)="scrollToTop()"></button>

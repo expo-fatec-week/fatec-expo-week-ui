@@ -55,7 +55,7 @@ export class AlertService {
   public confirm(message: string, title?: string, acceptFunction?: Function,
     // eslint-disable-next-line @typescript-eslint/ban-types
     rejectFunction?: Function) {
-    this.show(PrimeIcons.QUESTION_CIRCLE, message, title, {
+    this.show(message, PrimeIcons.QUESTION_CIRCLE, title, {
       accept: () => {
         if (acceptFunction) acceptFunction();
       },

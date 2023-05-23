@@ -8,22 +8,22 @@
             <div class="w-full">
                 <span class="p-float-label mb-4 w-full">
                     <input class="w-full" id="cpf" name="cpf" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitor.cpf" required>
+                        [(ngModel)]="requestLoginVisitor.cpf" required maxlength="11">
                     <label for="cpf">CPF</label>
                 </span>
                 <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="email" name="email" type="email" pInputText
-                        [(ngModel)]="requestLoginVisitor.email" required>
+                        [(ngModel)]="requestLoginVisitor.email" required maxlength="70">
                     <label for="email">E-mail</label>
                 </span>
                 <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="name" name="name" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitor.name" required>
+                        [(ngModel)]="requestLoginVisitor.name" required maxlength="130">
                     <label for="name">Nome</label>
                 </span>
                 <span *ngIf="enableRegister" class="p-float-label mb-4 w-full">
                     <input class="w-full" id="phone" name="phone" type="text" pInputText
-                        [(ngModel)]="requestLoginVisitor.tel" required>
+                        [(ngModel)]="requestLoginVisitor.tel" required maxlength="15">
                     <label for="phone">Telefone</label>
                 </span>
 

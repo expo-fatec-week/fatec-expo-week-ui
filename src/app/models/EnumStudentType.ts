@@ -1,0 +1,5 @@
+export enum EnumStudentType {
+    ORGANIZADOR = 'ORGANIZADOR',
+    EXPOSITOR = 'EXPOSITOR',
+    VISITANTE = 'VISITANTE'
+}

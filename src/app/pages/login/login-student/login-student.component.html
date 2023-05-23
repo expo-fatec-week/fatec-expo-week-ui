@@ -8,12 +8,12 @@
             <div class="w-full">
                 <span class="p-float-label mb-4 w-full">
                     <input class="w-full" id="ra" name="ra" type="text" pInputText [(ngModel)]="requestLoginStudent.ra"
-                        required>
+                        required maxlength="13">
                     <label for="ra">RA</label>
                 </span>
                 <span class="p-float-label mb-4 w-full">
                     <input class="w-full" id="email" name="email" type="email" pInputText
-                        [(ngModel)]="requestLoginStudent.email" required>
+                        [(ngModel)]="requestLoginStudent.email" required maxlength="70">
                     <label for="email">E-mail</label>
                 </span>
             </div>
