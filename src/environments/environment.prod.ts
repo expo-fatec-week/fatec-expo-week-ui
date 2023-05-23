@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  urlApi: 'http://localhost:3333/'
+  urlApi: 'https://web-production-a9cbb.up.railway.app/'
 };
