@@ -17,6 +17,7 @@ export class ParticipatedEventsComponent implements OnInit {
   public lectureDay = false;
   public events: ResponseEvent[] = [];
   private requestConfirmLecture: RequestConfirmLecture;
+  public displayModal = false;
 
   constructor(
     private studentService: StudentsService,
@@ -67,6 +68,10 @@ export class ParticipatedEventsComponent implements OnInit {
           this.listEvents();
         }
       );
+  }
+
+  showDialog() {
+    this.displayModal = true;
   }
 
 }

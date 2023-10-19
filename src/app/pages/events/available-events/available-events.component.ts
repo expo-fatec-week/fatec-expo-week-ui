@@ -12,11 +12,15 @@ export class AvailableEventsComponent implements OnInit {
 
   public isBlock = false;
   public events: ResponseEvent[] = [];
-  public currentFullDate = new Date().toISOString();
+  public currentFullDate: string;
 
   constructor(
     private eventService: EventService
-  ) { }
+  ) {
+    const date = new Date();
+    date.setHours(date.getHours() - 3);
+    this.currentFullDate = date.toISOString();
+  }
 
   ngOnInit(): void {
     this.listEvents();

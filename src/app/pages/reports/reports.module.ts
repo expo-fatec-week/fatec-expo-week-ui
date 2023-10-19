@@ -8,6 +8,7 @@ import { TableModule } from 'primeng-lts/table';
 import { SelectButtonModule } from 'primeng-lts/selectbutton';
 import { FormsModule } from '@angular/forms';
 import { DropdownModule } from 'primeng-lts/dropdown';
+import { DialogModule } from 'primeng-lts/dialog';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DropdownModule } from 'primeng-lts/dropdown';
     FormsModule,
     SelectButtonModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule
   ]
 })
 export class ReportsModule { }

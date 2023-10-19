@@ -1,6 +1,6 @@
 {
   "name": "fatec-expoweek-ui",
-  "version": "2023.04.13",
+  "version": "2023.06.01.01",
   "scripts": {
     "start": "ng lint && ng serve --open",
     "production": "npm cache clean -f && npm install && ng lint && ng build --aot --configuration=production --base-href .",
