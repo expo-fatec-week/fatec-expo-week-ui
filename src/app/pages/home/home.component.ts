@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { MenuItem } from 'primeng-lts/api';
+import { MenuItem } from 'primeng/api';
 import { EnumStudentType } from 'src/app/models/EnumStudentType';
 import { AlertService } from 'src/app/services/alert.service';
 import { TokenService } from 'src/app/services/token.service';

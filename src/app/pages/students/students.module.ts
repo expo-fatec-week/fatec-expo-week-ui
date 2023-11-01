@@ -5,7 +5,7 @@ import { StudentsRoutingModule } from './students-routing.module';
 import { LectureStudentsComponent } from './lecture-students/lecture-students.component';
 import { StandStudentsComponent } from './stand-students/stand-students.component';
 import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
-import { TableModule } from 'primeng-lts/table';
+import { TableModule } from 'primeng/table';
 
 
 @NgModule({

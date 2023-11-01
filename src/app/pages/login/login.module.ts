@@ -7,8 +7,8 @@ import { LoginStudentComponent } from './login-student/login-student.component';
 import { LoginVisitorComponent } from './login-visitor/login-visitor.component';
 
 import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
-import { CardModule } from 'primeng-lts/card';
-import { CheckboxModule } from 'primeng-lts/checkbox';
+import { CardModule } from 'primeng/card';
+import { CheckboxModule } from 'primeng/checkbox';
 import { LoginAdminComponent } from './login-admin/login-admin.component';
 
 @NgModule({

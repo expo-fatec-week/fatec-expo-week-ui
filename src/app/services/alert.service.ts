@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
-import { Confirmation, PrimeIcons } from 'primeng-lts/api';
-import { DialogService } from 'primeng-lts/dynamicdialog';
+import { Confirmation, PrimeIcons } from 'primeng/api';
+import { DialogService } from 'primeng/dynamicdialog';
 import { AlertComponent } from '../resources/components/alert/alert.component';
 
 @Injectable({

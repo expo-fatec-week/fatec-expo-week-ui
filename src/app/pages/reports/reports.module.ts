@@ -4,10 +4,11 @@ import { CommonModule } from '@angular/common';
 import { ReportsRoutingModule } from './reports-routing.module';
 import { ReportsComponent } from './reports.component';
 import { PrimengModule } from 'src/app/resources/primeng/primeng.module';
-import { TableModule } from 'primeng-lts/table';
-import { SelectButtonModule } from 'primeng-lts/selectbutton';
+import { TableModule } from 'primeng/table';
+import { SelectButtonModule } from 'primeng/selectbutton';
 import { FormsModule } from '@angular/forms';
-import { DropdownModule } from 'primeng-lts/dropdown';
+import { DropdownModule } from 'primeng/dropdown';
+import { DialogModule } from 'primeng/dialog';
 
 @NgModule({
   declarations: [
@@ -20,7 +21,8 @@ import { DropdownModule } from 'primeng-lts/dropdown';
     FormsModule,
     SelectButtonModule,
     TableModule,
-    DropdownModule
+    DropdownModule,
+    DialogModule
   ]
 })
 export class ReportsModule { }

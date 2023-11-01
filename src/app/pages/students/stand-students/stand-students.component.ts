@@ -16,7 +16,7 @@ export class StandStudentsComponent implements OnInit {
 
   public isBlock = false;
   public students: Student[] = [];
-  public requestConfirmExhibit: RequestConfirmExhibit
+  public requestConfirmExhibit: RequestConfirmExhibit;
   constructor(
     private studentService: StudentsService,
     private eventService: EventService,

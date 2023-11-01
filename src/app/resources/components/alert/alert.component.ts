@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { DynamicDialogConfig, DynamicDialogRef } from 'primeng-lts/dynamicdialog';
+import { DynamicDialogConfig, DynamicDialogRef } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-alert',

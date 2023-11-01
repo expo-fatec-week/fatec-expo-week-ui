@@ -1,7 +1,8 @@
 import { Component, OnInit } from '@angular/core';
-import { SelectItem } from 'primeng-lts/api';
+import { SelectItem } from 'primeng/api';
 import { finalize, first } from 'rxjs/operators';
 import { ResponseCourse } from 'src/app/models/course';
+import { ResponseEvent } from 'src/app/models/event';
 import { ResponseVisitor } from 'src/app/models/login';
 import { ResponseStudentByCourse } from 'src/app/models/student';
 import { AdminService } from 'src/app/services/admin.service';
@@ -21,9 +22,11 @@ export class ReportsComponent implements OnInit {
   public responseVisitors!: ResponseVisitor[];
   public courses!: ResponseCourse[];
   public selectedCourse!: ResponseCourse;
-  public columnsOfTable!: Array<{ field: string, header: string }>
+  public columnsOfTable!: Array<{ field: string, header: string }>;
   public readonly students = 'students';
   public readonly visitors = 'visitors';
+  public displayModal = false;
+  public events!: ResponseEvent[];
 
   constructor(
     private adminService: AdminService,
@@ -86,6 +89,44 @@ export class ReportsComponent implements OnInit {
           } else {
             this.alertService.info('Nenhum aluno deste curso participou do evento.');
           }
+        }
+      );
+  }
+
+  public listDetailsParticipatedByPerson(personId: number): void {
+    this.isBlock = true;
+    this.adminService.listDetailsParticipatedByPerson(personId)
+      .pipe(first(),
+        finalize(() => {
+          this.isBlock = false;
+        }))
+      .subscribe(
+        (success) => {
+          this.events = success;
+          this.displayModal = true;
+        }
+      );
+  }
+
+  public downloadDetailsParticipatedByCourse(): void {
+    this.isBlock = true;
+    this.adminService.downloadListDetailsParticipatedByCourse(this.selectedCourse.id_curso)
+      .pipe(first(),
+        finalize(() => {
+          this.isBlock = false;
+        }))
+      .subscribe(
+        (success) => {
+          const file = new Blob([success], { type: 'text/csv' });
+          const linkElement = document.createElement('a');
+          linkElement.setAttribute('href', window.URL.createObjectURL(file));
+          linkElement.setAttribute('download', 'RELATÓRIO_' + this.selectedCourse?.descricao?.replace(/ /g, '-') + '.csv');
+          const clickEvent = new MouseEvent('click', {
+            'view': window,
+            'bubbles': true,
+            'cancelable': false
+          });
+          linkElement.dispatchEvent(clickEvent);
         }
       );
   }

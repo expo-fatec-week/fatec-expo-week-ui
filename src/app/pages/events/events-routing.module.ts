@@ -4,7 +4,7 @@ import { AvailableEventsComponent } from './available-events/available-events.co
 import { ParticipatedEventsComponent } from './participated-events/participated-events.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: 'disponiveis' },
+  { path: '', redirectTo: 'disponiveis', pathMatch: 'prefix' },
   { path: 'disponiveis', component: AvailableEventsComponent },
   { path: 'participados', component: ParticipatedEventsComponent }
 ];

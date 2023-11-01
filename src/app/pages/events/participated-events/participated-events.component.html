@@ -1,5 +1,5 @@
 <div class="grid grid-nogutter justify-content-center">
-    <button pButton class="p-button-primary mb-4" label="Confirmar presença" (click)="op.toggle($event)"></button>
+    <button pButton class="p-button-primary mb-4" label="Confirmar presença" (click)="showDialog()"></button>
     <div class="card col-12 p-1 md:p-4">
         <p-table responsiveLayout="stack" [value]="events" [breakpoint]="'768px'">
             <ng-template pTemplate="caption">
@@ -27,7 +27,7 @@
                     </td>
                     <td>
                         <span class="p-column-title">Data</span>
-                        <span class="text-right">{{event.data_validacao | date : 'dd/MM/yyyy HH:mm'}}</span>
+                        <span class="text-right">{{event.data_validacao | date : 'dd/MM/yyyy HH:mm' : '+00:00'}}</span>
                     </td>
                 </tr>
             </ng-template>
@@ -35,23 +35,20 @@
     </div>
 </div>
 
-<p-overlayPanel #op [showCloseIcon]="true" [style]="{width: '325px'}">
-    <ng-template pTemplate>
-        <form ngNativeValidate autocomplete="off">
-            <div class="card --bg-i-dark-sec">
-                <div class="p-fluid">
-                    <div class="p-field">
-                        <label for="document">Código de validação</label>
-                        <input id="document" type="text" pInputText name="document" autocomplete="off" required
-                            minlength="8" maxlength="8" style="width: 86%;" #inputFloat />
-                        <p-button type="button" icon="pi pi-send" class="p-button-primary ml-1"
-                            (click)="confirmPresenceLecture(inputFloat.value)"></p-button>
-                    </div>
+<p-dialog header="Código de validação" [(visible)]="displayModal" [style]="{width: '325px'}" [modal]="true">
+    <form ngNativeValidate autocomplete="off">
+        <div class="card --bg-i-dark-sec">
+            <div class="p-fluid">
+                <div class="p-field">
+                    <input id="document" type="text" pInputText name="document" autocomplete="off" required
+                        minlength="8" maxlength="8" style="width: 86%;" #inputFloat />
+                    <p-button type="button" icon="pi pi-send" class="p-button-primary ml-1"
+                        (click)="confirmPresenceLecture(inputFloat.value)"></p-button>
                 </div>
             </div>
-        </form>
-    </ng-template>
-</p-overlayPanel>
+        </div>
+    </form>
+<p-dialog>
 
 <p-blockUI [blocked]="isBlock">
     <i class="pi pi-spin pi-spinner" style="font-size: 4rem"></i>
