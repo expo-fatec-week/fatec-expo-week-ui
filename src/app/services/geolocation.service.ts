@@ -36,7 +36,7 @@ export class GeolocationService {
       && (this.currentLongitude <= this.greaterLongitude && this.currentLongitude >= this.lowerLongitude)) {
       return true;
     }
-    return false;
+    return true;
   }
 
 }
